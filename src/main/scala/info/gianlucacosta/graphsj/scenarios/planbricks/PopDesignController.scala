@@ -5,7 +5,7 @@ import info.gianlucacosta.eighthbridge.fx.canvas.basic.DragDropController
 import info.gianlucacosta.eighthbridge.graphs.CircularGraphException
 import info.gianlucacosta.helios.fx.dialogs.{Alerts, InputDialogs}
 import info.gianlucacosta.helios.fx.geometry.DiagonalBounds
-import info.gianlucacosta.helios.fx.geometry.extensions.GeometryExtensions._
+import info.gianlucacosta.helios.fx.Includes._
 import info.gianlucacosta.lambdaprism.logic.basic.formulas.{Argument, Literal, Variable}
 import info.gianlucacosta.lambdaprism.logic.basic.matching.{Environment, SymbolicMatch}
 import info.gianlucacosta.lambdaprism.planning.problem.{Action, Problem}
