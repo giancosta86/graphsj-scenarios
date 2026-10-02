@@ -12,7 +12,7 @@ object PrimScenario {
     "Prim's Shortest Spanning Tree (SST)"
 
   private val WebsiteUrl =
-    "https://github.com/giancosta86/GraphsJ-scenarios"
+    "https://github.com/giancosta86/graphsj-scenarios"
 }
 
 
