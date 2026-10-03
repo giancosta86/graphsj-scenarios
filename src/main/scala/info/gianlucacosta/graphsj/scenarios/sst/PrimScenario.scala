@@ -42,7 +42,7 @@ class PrimScenario extends Scenario[PrimVertex, PrimLink, PrimGraph] {
 
 
   override def createRuntimeController(): GraphCanvasController[PrimVertex, PrimLink, PrimGraph] =
-    new DragDropController[PrimVertex, PrimLink, PrimGraph](false)
+    new DragDropController[PrimVertex, PrimLink, PrimGraph](renderDirected = false)
 
 
   override def createDesignGraph(): PrimGraph =

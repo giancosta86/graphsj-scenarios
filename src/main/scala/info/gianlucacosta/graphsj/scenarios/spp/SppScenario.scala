@@ -42,7 +42,7 @@ class SppScenario extends Scenario[SppVertex, SppLink, SppGraph] {
 
 
   override def createRuntimeController(): GraphCanvasController[SppVertex, SppLink, SppGraph] =
-    new DragDropController[SppVertex, SppLink, SppGraph](true)
+    new DragDropController[SppVertex, SppLink, SppGraph](renderDirected = true)
 
 
   override def createDesignGraph(): SppGraph =
