@@ -1,4 +1,4 @@
-package info.gianlucacosta.graphsj.scenarios.sst
+package info.gianlucacosta.graphsj.scenarios.prim
 
 import java.util.UUID
 

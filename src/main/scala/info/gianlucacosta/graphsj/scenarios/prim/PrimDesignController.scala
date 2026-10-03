@@ -1,4 +1,4 @@
-package info.gianlucacosta.graphsj.scenarios.sst
+package info.gianlucacosta.graphsj.scenarios.prim
 
 import info.gianlucacosta.eighthbridge.fx.canvas.basic.editing.{VertexNamingController, WeightLinkController}
 import info.gianlucacosta.eighthbridge.graphs.point2point.visual.VisualGraph
