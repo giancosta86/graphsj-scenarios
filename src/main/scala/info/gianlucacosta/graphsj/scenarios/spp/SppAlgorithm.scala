@@ -45,7 +45,7 @@ class SppAlgorithm[G <: VisualGraph[SppVertex, SppLink, G]] extends Algorithm[Sp
 
   private def init(graph: G, console: OutputConsole): (G, Boolean) = {
     //TODO! Duplicated!
-    if (graph.rootVertexes.isEmpty) {
+    if (graph.vertexes.isEmpty) {
       throw new RuntimeException("No vertex defined!")
     }
 

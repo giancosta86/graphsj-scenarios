@@ -47,7 +47,7 @@ class PrimAlgorithm[G <: VisualGraph[PrimVertex, PrimLink, G]] extends Algorithm
 
 
   private def init(graph: G, console: OutputConsole): (G, Boolean) = {
-    if (graph.rootVertexes.isEmpty) {
+    if (graph.vertexes.isEmpty) {
       throw new RuntimeException("No vertex defined!")
     }
 
