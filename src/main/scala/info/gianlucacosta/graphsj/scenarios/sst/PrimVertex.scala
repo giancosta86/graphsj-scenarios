@@ -9,10 +9,6 @@ import info.gianlucacosta.helios.mathutils.Numbers
 import scalafx.geometry.{Dimension2D, Point2D}
 
 
-object PrimVertex {
-  val FontDimension = new Dimension2D(12, 19)
-}
-
 case class PrimVertex(
                        center: Point2D,
                        styleClasses: List[String] = List(),
