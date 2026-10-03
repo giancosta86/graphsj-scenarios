@@ -1,0 +1,8 @@
+.solution .line  {
+    -fx-stroke: #e5a2cc;
+}
+
+
+.solution:selected .line  {
+    -fx-stroke: #b72c84;
+}
