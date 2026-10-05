@@ -1,15 +1,14 @@
 package info.gianlucacosta.graphsj.scenarios.spp
 
 import info.gianlucacosta.eighthbridge.fx.canvas.VisualGraph
-import info.gianlucacosta.eighthbridge.graphs.point2point.{ArcBinding, TopologyCacheDirectedGraph}
+import info.gianlucacosta.eighthbridge.graphs.point2point.ArcBinding
 
 case class SppGraph(
                       vertexes: Set[SppVertex] = Set(),
                       links: Set[SppLink] = Set(),
                       bindings: Set[ArcBinding] = Set()
                     )
-  extends VisualGraph[SppVertex, SppLink]
-    with TopologyCacheDirectedGraph[SppVertex, SppLink] {
+  extends VisualGraph[SppVertex, SppLink] {
   override protected def graphCopy(vertexes: Set[SppVertex], links: Set[SppLink], bindings: Set[ArcBinding]): this.type =
     copy(
       vertexes = vertexes,

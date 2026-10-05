@@ -3,7 +3,7 @@ package info.gianlucacosta.graphsj.scenarios.planbricks
 import info.gianlucacosta.eighthbridge.fx.canvas.VisualGraph
 
 import java.util.UUID
-import info.gianlucacosta.eighthbridge.graphs.point2point.{ArcBinding, TopologyCacheDirectedGraph}
+import info.gianlucacosta.eighthbridge.graphs.point2point.ArcBinding
 import info.gianlucacosta.lambdaprism.logic.basic.matching.{Environment, SymbolicMatch}
 import info.gianlucacosta.lambdaprism.planning.problem.Problem
 import scalafx.geometry.Point2D
@@ -315,8 +315,7 @@ case class PopGraph private(
                              vertexes: Set[StepVertex] = Set(),
                              links: Set[PopLink] = Set(),
                              bindings: Set[ArcBinding] = Set()
-                           ) extends VisualGraph[StepVertex, PopLink]
-  with TopologyCacheDirectedGraph[StepVertex, PopLink] {
+                           ) extends VisualGraph[StepVertex, PopLink] {
 
   @transient
   lazy val temporalLinks: Set[TemporalLink] =
