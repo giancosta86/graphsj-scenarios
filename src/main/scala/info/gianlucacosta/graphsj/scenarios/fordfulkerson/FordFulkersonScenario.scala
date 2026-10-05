@@ -34,7 +34,7 @@ class FordFulkersonScenario extends Scenario[FordFulkersonVertex, FordFulkersonL
 
 
   override def createAlgorithm(): Algorithm[FordFulkersonVertex, FordFulkersonLink, FordFulkersonGraph] =
-    new FordFulkersonAlgorithm[FordFulkersonGraph]
+    new FordFulkersonAlgorithm
 
 
   override def createDesignController(): GraphCanvasController[FordFulkersonVertex, FordFulkersonLink, FordFulkersonGraph] =

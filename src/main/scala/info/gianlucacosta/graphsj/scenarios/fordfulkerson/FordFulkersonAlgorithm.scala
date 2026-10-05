@@ -6,7 +6,7 @@ import info.gianlucacosta.helios.fx.dialogs.InputDialogs
 import info.gianlucacosta.helios.mathutils.Numbers
 
 
-class FordFulkersonAlgorithm[G <: VisualGraph[FordFulkersonVertex, FordFulkersonLink, G]] extends Algorithm[FordFulkersonVertex, FordFulkersonLink, G] {
+class FordFulkersonAlgorithm extends Algorithm[FordFulkersonVertex, FordFulkersonLink, FordFulkersonGraph] {
   private var startVertex: FordFulkersonVertex = _
   private var stopVertex: FordFulkersonVertex = _
   private var incChain: Option[List[(FordFulkersonVertex, FordFulkersonVertex)]] = _
@@ -22,7 +22,7 @@ class FordFulkersonAlgorithm[G <: VisualGraph[FordFulkersonVertex, FordFulkerson
   }
 
 
-  private def getMinWeightBetween(graph: G, vertexes: Set[FordFulkersonVertex]): Double = {
+  private def getMinWeightBetween(graph: FordFulkersonGraph, vertexes: Set[FordFulkersonVertex]): Double = {
     graph.getLinksBetween(vertexes)
       .map(_.weight)
       .toList
@@ -32,7 +32,7 @@ class FordFulkersonAlgorithm[G <: VisualGraph[FordFulkersonVertex, FordFulkerson
   }
 
 
-  override def runStep(stepIndex: Int, graph: G, console: OutputConsole): (G, Boolean) = {
+  override def runStep(stepIndex: Int, graph: FordFulkersonGraph, console: OutputConsole): (FordFulkersonGraph, Boolean) = {
     stepIndex match {
       case 0 =>
         init(graph, console)
@@ -43,7 +43,7 @@ class FordFulkersonAlgorithm[G <: VisualGraph[FordFulkersonVertex, FordFulkerson
   }
 
 
-  private def init(graph: G, console: OutputConsole): (G, Boolean) = {
+  private def init(graph: FordFulkersonGraph, console: OutputConsole): (FordFulkersonGraph, Boolean) = {
     if (graph.vertexes.isEmpty) {
       throw new RuntimeException("No vertex defined!")
     }
@@ -82,7 +82,7 @@ class FordFulkersonAlgorithm[G <: VisualGraph[FordFulkersonVertex, FordFulkerson
   }
 
 
-  private def runStandardStep(stepIndex: Int, graph: G, console: OutputConsole): (G, Boolean) = {
+  private def runStandardStep(stepIndex: Int, graph: FordFulkersonGraph, console: OutputConsole): (FordFulkersonGraph, Boolean) = {
     if (verbose) {
       console.writeln();
       console.writeHeader("Step " + stepIndex);
