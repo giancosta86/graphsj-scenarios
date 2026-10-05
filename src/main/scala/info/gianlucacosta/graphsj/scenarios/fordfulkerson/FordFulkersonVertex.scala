@@ -10,11 +10,11 @@ import scalafx.geometry.{Dimension2D, Point2D}
 
 
 case class FordFulkersonVertex(
+                       explored: Option[Boolean] = None,
+                       tag: Option[FordFulkersonTag] = None,
                        center: Point2D,
                        styleClasses: List[String] = List(),
                        name: String = "",
-                       explored: Option[Boolean] = None,
-                       tag: Option[FordFulkersonTag] = None,
                        @transient selected: Boolean = false,
                        id: UUID = UUID.randomUUID()
                      ) extends BasicVertex[FordFulkersonVertex] with Named[FordFulkersonVertex] {
@@ -26,8 +26,8 @@ case class FordFulkersonVertex(
       val deltaString = Numbers.smartString(tag.delta)
 
       val exploredSuffix = if (explored.get) " @" else ""
-
-      s"${name} [${sign}${tag.vk.name}, ${deltaString}]${exploredSuffix}"
+      //TODO! Revise the logic for this label!
+      s"${name} [${sign}${tag.vk.map(_.name).getOrElse("ø")}, ${deltaString}]${exploredSuffix}"
     }
       .getOrElse(name)
 

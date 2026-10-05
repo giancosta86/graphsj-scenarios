@@ -2,6 +2,6 @@ package info.gianlucacosta.graphsj.scenarios.fordfulkerson
 
 case class FordFulkersonTag(
   plusVk: Boolean,
-  vk: FordFulkersonVertex,
+  vk: Option[FordFulkersonVertex],
   delta: Double
 )
