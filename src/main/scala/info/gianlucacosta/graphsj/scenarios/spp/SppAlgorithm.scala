@@ -6,7 +6,7 @@ import info.gianlucacosta.helios.fx.dialogs.InputDialogs
 import info.gianlucacosta.helios.mathutils.Numbers
 
 
-class SppAlgorithm[G <: VisualGraph[SppVertex, SppLink, G]] extends Algorithm[SppVertex, SppLink, G] {
+class SppAlgorithm extends Algorithm[SppVertex, SppLink, SppGraph] {
   private var vList: List[SppVertex] = _;
   private var pathVertexes: List[SppVertex] = _;
   private var pathEdges: List[(SppVertex, SppVertex)] = _;
@@ -22,7 +22,7 @@ class SppAlgorithm[G <: VisualGraph[SppVertex, SppLink, G]] extends Algorithm[Sp
   }
 
   //TODO! Duplicated!
-  private def getMinWeightBetween(graph: G, sourceVertex: SppVertex, targetVertex: SppVertex): Double = {
+  private def getMinWeightBetween(graph: SppGraph, sourceVertex: SppVertex, targetVertex: SppVertex): Double = {
     graph.getArcsBetween(sourceVertex, targetVertex)
       .map(_.weight)
       .toList
@@ -32,7 +32,7 @@ class SppAlgorithm[G <: VisualGraph[SppVertex, SppLink, G]] extends Algorithm[Sp
   }
 
 
-  override def runStep(stepIndex: Int, graph: G, console: OutputConsole): (G, Boolean) = {
+  override def runStep(stepIndex: Int, graph: SppGraph, console: OutputConsole): (SppGraph, Boolean) = {
     stepIndex match {
       case 0 =>
         init(graph, console)
@@ -43,7 +43,7 @@ class SppAlgorithm[G <: VisualGraph[SppVertex, SppLink, G]] extends Algorithm[Sp
   }
 
 
-  private def init(graph: G, console: OutputConsole): (G, Boolean) = {
+  private def init(graph: SppGraph, console: OutputConsole): (SppGraph, Boolean) = {
     //TODO! Duplicated!
     if (graph.vertexes.isEmpty) {
       throw new RuntimeException("No vertex defined!")
@@ -111,7 +111,7 @@ class SppAlgorithm[G <: VisualGraph[SppVertex, SppLink, G]] extends Algorithm[Sp
   }
 
 
-  private def runStandardStep(stepIndex: Int, graph: G, console: OutputConsole): (G, Boolean) = {
+  private def runStandardStep(stepIndex: Int, graph: SppGraph, console: OutputConsole): (SppGraph, Boolean) = {
     if (verbose) {
       console.writeHeader("Step " + stepIndex);
     }
