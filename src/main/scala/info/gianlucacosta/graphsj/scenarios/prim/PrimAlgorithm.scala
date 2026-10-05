@@ -6,7 +6,7 @@ import info.gianlucacosta.helios.fx.dialogs.InputDialogs
 import info.gianlucacosta.helios.mathutils.Numbers
 
 
-class PrimAlgorithm[G <: VisualGraph[PrimVertex, PrimLink, G]] extends Algorithm[PrimVertex, PrimLink, G] {
+class PrimAlgorithm extends Algorithm[PrimVertex, PrimLink, PrimGraph] {
   private var vList: List[PrimVertex] = _
   private var wList: List[PrimVertex] = _
   private var vBar: PrimVertex = _
@@ -25,7 +25,7 @@ class PrimAlgorithm[G <: VisualGraph[PrimVertex, PrimLink, G]] extends Algorithm
   }
 
 
-  private def getMinWeightBetween(graph: G, vertexes: Set[PrimVertex]): Double = {
+  private def getMinWeightBetween(graph: PrimGraph, vertexes: Set[PrimVertex]): Double = {
     graph.getLinksBetween(vertexes)
       .map(_.weight)
       .toList
@@ -35,7 +35,7 @@ class PrimAlgorithm[G <: VisualGraph[PrimVertex, PrimLink, G]] extends Algorithm
   }
 
 
-  override def runStep(stepIndex: Int, graph: G, console: OutputConsole): (G, Boolean) = {
+  override def runStep(stepIndex: Int, graph: PrimGraph, console: OutputConsole): (PrimGraph, Boolean) = {
     stepIndex match {
       case 0 =>
         init(graph, console)
@@ -46,7 +46,7 @@ class PrimAlgorithm[G <: VisualGraph[PrimVertex, PrimLink, G]] extends Algorithm
   }
 
 
-  private def init(graph: G, console: OutputConsole): (G, Boolean) = {
+  private def init(graph: PrimGraph, console: OutputConsole): (PrimGraph, Boolean) = {
     if (graph.vertexes.isEmpty) {
       throw new RuntimeException("No vertex defined!")
     }
@@ -122,7 +122,7 @@ class PrimAlgorithm[G <: VisualGraph[PrimVertex, PrimLink, G]] extends Algorithm
   }
 
 
-  private def runStandardStep(stepIndex: Int, graph: G, console: OutputConsole): (G, Boolean) = {
+  private def runStandardStep(stepIndex: Int, graph: PrimGraph, console: OutputConsole): (PrimGraph, Boolean) = {
     if (verbose) {
       console.writeHeader("Step " + stepIndex)
       console.writeln()
