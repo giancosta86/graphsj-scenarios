@@ -1,6 +1,6 @@
 package info.gianlucacosta.graphsj.scenarios.fordfulkerson
 
-import info.gianlucacosta.eighthbridge.graphs.point2point.visual.VisualGraph
+import info.gianlucacosta.eighthbridge.fx.canvas.VisualGraph
 import info.gianlucacosta.eighthbridge.graphs.point2point.{ArcBinding, TopologyCacheDirectedGraph}
 
 case class FordFulkersonGraph(

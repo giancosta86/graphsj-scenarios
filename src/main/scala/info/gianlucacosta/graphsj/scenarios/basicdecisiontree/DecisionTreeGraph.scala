@@ -1,11 +1,10 @@
 package info.gianlucacosta.graphsj.scenarios.basicdecisiontree
 
+import info.gianlucacosta.eighthbridge.fx.canvas.VisualGraph
 import info.gianlucacosta.eighthbridge.fx.canvas.basic.BasicVertexNode
 import info.gianlucacosta.eighthbridge.fx.canvas.basic.BasicVertexNode.DimensionQuery
 import info.gianlucacosta.eighthbridge.graphs.point2point.ArcBinding
-import info.gianlucacosta.eighthbridge.graphs.point2point.visual.VisualGraph
 import info.gianlucacosta.lambdaprism.classification.basic.{DecisionTree, DecisionTreeLeaf, Value}
-
 import scalafx.geometry.{Dimension2D, Point2D}
 
 

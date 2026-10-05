@@ -1,7 +1,6 @@
 package info.gianlucacosta.graphsj.scenarios.spp
 
 import info.gianlucacosta.eighthbridge.fx.canvas.basic.editing.{VertexNamingController, WeightLinkController}
-import info.gianlucacosta.eighthbridge.graphs.point2point.visual.VisualGraph
 
 import scalafx.geometry.Point2D
 

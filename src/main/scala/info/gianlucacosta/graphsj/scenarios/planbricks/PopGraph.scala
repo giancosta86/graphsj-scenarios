@@ -1,12 +1,11 @@
 package info.gianlucacosta.graphsj.scenarios.planbricks
 
-import java.util.UUID
+import info.gianlucacosta.eighthbridge.fx.canvas.VisualGraph
 
-import info.gianlucacosta.eighthbridge.graphs.point2point.visual.VisualGraph
+import java.util.UUID
 import info.gianlucacosta.eighthbridge.graphs.point2point.{ArcBinding, TopologyCacheDirectedGraph}
 import info.gianlucacosta.lambdaprism.logic.basic.matching.{Environment, SymbolicMatch}
 import info.gianlucacosta.lambdaprism.planning.problem.Problem
-
 import scalafx.geometry.Point2D
 
 

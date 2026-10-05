@@ -1,9 +1,9 @@
 package info.gianlucacosta.graphsj.scenarios.adgraphplan
 
-import java.util.UUID
+import info.gianlucacosta.eighthbridge.fx.canvas.VisualGraph
 
+import java.util.UUID
 import info.gianlucacosta.eighthbridge.graphs.point2point.ArcBinding
-import info.gianlucacosta.eighthbridge.graphs.point2point.visual.VisualGraph
 import info.gianlucacosta.lambdaprism.logic.basic.formulas.Literal
 import info.gianlucacosta.lambdaprism.logic.basic.matching.{Environment, SymbolicMatch}
 import info.gianlucacosta.lambdaprism.planning.problem._

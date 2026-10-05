@@ -1,9 +1,7 @@
 package info.gianlucacosta.graphsj.scenarios.fordfulkerson
 
-import info.gianlucacosta.eighthbridge.graphs.point2point.visual.VisualGraph
 import info.gianlucacosta.graphsj.{Algorithm, OutputConsole}
 import info.gianlucacosta.helios.fx.dialogs.InputDialogs
-import info.gianlucacosta.helios.mathutils.Numbers
 
 
 class FordFulkersonAlgorithm extends Algorithm[FordFulkersonVertex, FordFulkersonLink, FordFulkersonGraph] {

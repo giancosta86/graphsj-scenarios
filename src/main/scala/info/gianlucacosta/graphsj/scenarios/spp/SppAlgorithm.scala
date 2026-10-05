@@ -1,6 +1,5 @@
 package info.gianlucacosta.graphsj.scenarios.spp
 
-import info.gianlucacosta.eighthbridge.graphs.point2point.visual.VisualGraph
 import info.gianlucacosta.graphsj.{Algorithm, OutputConsole}
 import info.gianlucacosta.helios.fx.dialogs.InputDialogs
 import info.gianlucacosta.helios.mathutils.Numbers

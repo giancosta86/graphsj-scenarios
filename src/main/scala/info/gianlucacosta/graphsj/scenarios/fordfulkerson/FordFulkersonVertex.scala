@@ -1,12 +1,10 @@
 package info.gianlucacosta.graphsj.scenarios.fordfulkerson
 
 import java.util.UUID
-
 import info.gianlucacosta.eighthbridge.fx.canvas.basic.BasicVertex
-import info.gianlucacosta.eighthbridge.graphs.point2point.specific.Named
+import info.gianlucacosta.eighthbridge.graphs.features.Named
 import info.gianlucacosta.helios.mathutils.Numbers
-
-import scalafx.geometry.{Dimension2D, Point2D}
+import scalafx.geometry.Point2D
 
 
 case class FordFulkersonVertex(
