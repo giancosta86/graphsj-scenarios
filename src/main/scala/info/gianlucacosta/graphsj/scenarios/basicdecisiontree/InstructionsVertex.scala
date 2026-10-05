@@ -12,7 +12,7 @@ case object InstructionsVertex extends DecisionTreeVertex {
   override def center: Point2D =
     new Point2D(420, 200)
 
-  override def visualCopy(center: Point2D, selected: Boolean): DecisionTreeVertex =
+  override def visualCopy(center: Point2D, selected: Boolean): this.type =
     InstructionsVertex
 
   override def styleClasses: List[String] =

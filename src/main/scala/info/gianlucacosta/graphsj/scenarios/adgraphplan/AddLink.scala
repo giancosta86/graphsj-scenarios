@@ -15,9 +15,9 @@ case class AddLink(
   override val styleClasses: List[String] =
     List("addLink")
 
-  override def visualCopy(internalPoints: List[Point2D], selected: Boolean, labelCenter: Option[Point2D]): AddLink =
+  override def visualCopy(internalPoints: List[Point2D], selected: Boolean, labelCenter: Option[Point2D]): this.type =
     copy(
       internalPoints = internalPoints,
       selected = selected,
-      labelCenter = labelCenter)
+      labelCenter = labelCenter).asInstanceOf[this.type]
 }

@@ -316,8 +316,8 @@ case class PopGraph private(
                              vertexes: Set[StepVertex] = Set(),
                              links: Set[PopLink] = Set(),
                              bindings: Set[ArcBinding] = Set()
-                           ) extends VisualGraph[StepVertex, PopLink, PopGraph]
-  with TopologyCacheDirectedGraph[StepVertex, PopLink, PopGraph] {
+                           ) extends VisualGraph[StepVertex, PopLink]
+  with TopologyCacheDirectedGraph[StepVertex, PopLink] {
 
   @transient
   lazy val temporalLinks: Set[TemporalLink] =
@@ -355,12 +355,12 @@ case class PopGraph private(
         .filter(_.isInstanceOf[TemporalLink])
 
 
-  override protected def graphCopy(vertexes: Set[StepVertex], links: Set[PopLink], bindings: Set[ArcBinding]): PopGraph =
+  override protected def graphCopy(vertexes: Set[StepVertex], links: Set[PopLink], bindings: Set[ArcBinding]): this.type =
     copy(
       vertexes = vertexes,
       links = links,
       bindings = bindings
-    )
+    ).asInstanceOf[this.type]
 
 
   def makeConsistent(): PopGraph = {

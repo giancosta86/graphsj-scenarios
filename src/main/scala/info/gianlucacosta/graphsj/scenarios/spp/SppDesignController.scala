@@ -5,12 +5,12 @@ import info.gianlucacosta.eighthbridge.graphs.point2point.visual.VisualGraph
 
 import scalafx.geometry.Point2D
 
-class SppDesignController[G <: VisualGraph[SppVertex, SppLink, G]] extends VertexNamingController[SppVertex, SppLink, G] with WeightLinkController[SppVertex, SppLink, G] {
+class SppDesignController extends VertexNamingController[SppVertex, SppLink, SppGraph] with WeightLinkController[SppVertex, SppLink, SppGraph] {
   override protected def instantiateVertex(center: Point2D, vertexName: String): SppVertex =
     new SppVertex(center = center, name = vertexName)
 
 
-  override def createLink(graph: G, sourceVertex: SppVertex, targetVertex: SppVertex): Option[G] = {
+  override def createLink(graph: SppGraph, sourceVertex: SppVertex, targetVertex: SppVertex): Option[SppGraph] = {
     val link = new SppLink(
       weight = 0
     )

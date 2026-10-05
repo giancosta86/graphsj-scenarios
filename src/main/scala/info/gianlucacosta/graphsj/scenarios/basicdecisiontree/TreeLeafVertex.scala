@@ -23,11 +23,11 @@ case class TreeLeafVertex(
     TreeLeafVertex.formatLeaf(treeLeaf)
 
 
-  override def visualCopy(center: Point2D, selected: Boolean): TreeLeafVertex =
+  override def visualCopy(center: Point2D, selected: Boolean): this.type =
     copy(
       center = center,
       selected = selected
-    )
+    ).asInstanceOf[this.type]
 
   override def styleClasses: List[String] =
     List()

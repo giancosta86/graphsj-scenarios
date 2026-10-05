@@ -42,9 +42,9 @@ case class StepVertex(
     List("stepVertex")
 
 
-  override def visualCopy(center: Point2D, selected: Boolean): StepVertex =
+  override def visualCopy(center: Point2D, selected: Boolean): this.type =
     copy(
       center = center,
       selected = selected
-    )
+    ).asInstanceOf[this.type]
 }

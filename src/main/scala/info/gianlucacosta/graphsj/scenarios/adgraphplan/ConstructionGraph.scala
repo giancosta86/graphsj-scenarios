@@ -34,17 +34,17 @@ case class ConstructionGraph private(
                                       vertexes: Set[ConstructionVertex] = Set(),
                                       links: Set[ConstructionLink] = Set(),
                                       bindings: Set[ArcBinding] = Set()
-                                    ) extends VisualGraph[ConstructionVertex, ConstructionLink, ConstructionGraph] {
+                                    ) extends VisualGraph[ConstructionVertex, ConstructionLink] {
 
   require(propositionLevels.size == stepLevels.size + 1)
 
 
-  override protected def graphCopy(vertexes: Set[ConstructionVertex], links: Set[ConstructionLink], bindings: Set[ArcBinding]): ConstructionGraph =
+  override protected def graphCopy(vertexes: Set[ConstructionVertex], links: Set[ConstructionLink], bindings: Set[ArcBinding]): this.type =
     copy(
       vertexes = vertexes,
       links = links,
       bindings = bindings
-    )
+    ).asInstanceOf[this.type]
 
 
   def advanceSteps(): Option[ConstructionGraph] = {

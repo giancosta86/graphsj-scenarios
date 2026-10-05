@@ -1,9 +1,10 @@
 package info.gianlucacosta.graphsj.scenarios.prim
 
-import info.gianlucacosta.eighthbridge.graphs.point2point.visual.VisualGraph
 import info.gianlucacosta.graphsj.{Algorithm, OutputConsole}
 import info.gianlucacosta.helios.fx.dialogs.InputDialogs
 import info.gianlucacosta.helios.mathutils.Numbers
+
+import scala.language.implicitConversions
 
 
 class PrimAlgorithm extends Algorithm[PrimVertex, PrimLink, PrimGraph] {
@@ -23,17 +24,6 @@ class PrimAlgorithm extends Algorithm[PrimVertex, PrimLink, PrimGraph] {
       .map(binding => s"{${binding._1.name}, ${binding._2.name}}")
       .mkString("[", ", ", "]")
   }
-
-
-  private def getMinWeightBetween(graph: PrimGraph, vertexes: Set[PrimVertex]): Double = {
-    graph.getLinksBetween(vertexes)
-      .map(_.weight)
-      .toList
-      .sorted
-      .headOption
-      .getOrElse(Double.PositiveInfinity)
-  }
-
 
   override def runStep(stepIndex: Int, graph: PrimGraph, console: OutputConsole): (PrimGraph, Boolean) = {
     stepIndex match {
@@ -77,7 +67,7 @@ class PrimAlgorithm extends Algorithm[PrimVertex, PrimLink, PrimGraph] {
         .map(vertex =>
           vertex.copy(
             bestVertex = Some(v1),
-            distanceFromBestVertex = Some(getMinWeightBetween(graph, Set(v1, vertex)))
+            distanceFromBestVertex = Some(graph.getMinWeightBetween(v1, vertex))
           )
         )
 
@@ -130,7 +120,7 @@ class PrimAlgorithm extends Algorithm[PrimVertex, PrimLink, PrimGraph] {
 
 
     vList = vList.map(vertex => {
-      val distanceFromVBar = getMinWeightBetween(graph, Set(vBar, vertex))
+      val distanceFromVBar = graph.getMinWeightBetween(vBar, vertex)
 
       if (distanceFromVBar < vertex.distanceFromBestVertex.get) {
         vertex.copy(

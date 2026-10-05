@@ -38,7 +38,7 @@ class PrimScenario extends Scenario[PrimVertex, PrimLink, PrimGraph] {
 
 
   override def createDesignController(): GraphCanvasController[PrimVertex, PrimLink, PrimGraph] =
-    new PrimDesignController[PrimGraph]
+    new PrimDesignController
 
 
   override def createRuntimeController(): GraphCanvasController[PrimVertex, PrimLink, PrimGraph] =

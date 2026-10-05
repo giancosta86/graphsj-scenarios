@@ -5,12 +5,12 @@ import info.gianlucacosta.eighthbridge.graphs.point2point.visual.VisualGraph
 
 import scalafx.geometry.Point2D
 
-class PrimDesignController[G <: VisualGraph[PrimVertex, PrimLink, G]] extends VertexNamingController[PrimVertex, PrimLink, G] with WeightLinkController[PrimVertex, PrimLink, G] {
+class PrimDesignController extends VertexNamingController[PrimVertex, PrimLink, PrimGraph] with WeightLinkController[PrimVertex, PrimLink, PrimGraph] {
   override protected def instantiateVertex(center: Point2D, vertexName: String): PrimVertex =
     new PrimVertex(center = center, name = vertexName)
 
 
-  override def createLink(graph: G, sourceVertex: PrimVertex, targetVertex: PrimVertex): Option[G] = {
+  override def createLink(graph: PrimGraph, sourceVertex: PrimVertex, targetVertex: PrimVertex): Option[PrimGraph] = {
     val link = new PrimLink(
       weight = 0
     )

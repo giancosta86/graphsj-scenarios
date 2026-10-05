@@ -3,7 +3,7 @@ package info.gianlucacosta.graphsj.scenarios.adgraphplan
 import info.gianlucacosta.eighthbridge.fx.canvas.basic.BasicLink
 
 
-trait ConstructionLink extends BasicLink[ConstructionLink] {
+trait ConstructionLink extends BasicLink {
   override val text: String =
     ""
 }

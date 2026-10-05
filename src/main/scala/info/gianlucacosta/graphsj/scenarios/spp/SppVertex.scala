@@ -17,7 +17,7 @@ case class SppVertex(
                        pathLength: Option[Double] = None,
                        @transient selected: Boolean = false,
                        id: UUID = UUID.randomUUID()
-                     ) extends BasicVertex[SppVertex] with Named[SppVertex] {
+                     ) extends BasicVertex with Named {
   override val text: String =
     if (previousVertex.nonEmpty)
       s"${name} {${previousVertex.get.name}, ${Numbers.smartString(pathLength.get)}}"
@@ -25,13 +25,13 @@ case class SppVertex(
       name
 
 
-  override def visualCopy(center: Point2D, selected: Boolean): SppVertex =
+  override def visualCopy(center: Point2D, selected: Boolean): this.type =
     copy(
       center = center,
       selected = selected
-    )
+    ).asInstanceOf[this.type]
 
 
-  override def nameCopy(name: String): SppVertex =
-    copy(name = name)
+  override def nameCopy(name: String): this.type =
+    copy(name = name).asInstanceOf[this.type]
 }

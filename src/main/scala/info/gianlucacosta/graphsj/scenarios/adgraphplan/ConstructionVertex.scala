@@ -6,4 +6,4 @@ object ConstructionVertex {
   val MutexString = "--MUTEX--"
 }
 
-trait ConstructionVertex extends BasicVertex[ConstructionVertex]
+trait ConstructionVertex extends BasicVertex

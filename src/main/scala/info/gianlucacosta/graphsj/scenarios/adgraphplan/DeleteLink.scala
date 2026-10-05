@@ -16,9 +16,10 @@ case class DeleteLink(
     List("deleteLink")
 
 
-  override def visualCopy(internalPoints: List[Point2D], selected: Boolean, labelCenter: Option[Point2D]): DeleteLink =
+  override def visualCopy(internalPoints: List[Point2D], selected: Boolean, labelCenter: Option[Point2D]): this.type =
     copy(
       internalPoints = internalPoints,
       selected = selected,
-      labelCenter = labelCenter)
+      labelCenter = labelCenter
+    ).asInstanceOf[this.type]
 }

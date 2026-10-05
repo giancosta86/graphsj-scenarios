@@ -8,12 +8,12 @@ case class FordFulkersonGraph(
                       links: Set[FordFulkersonLink] = Set(),
                       bindings: Set[ArcBinding] = Set()
                     )
-  extends VisualGraph[FordFulkersonVertex, FordFulkersonLink, FordFulkersonGraph]
-    with TopologyCacheDirectedGraph[FordFulkersonVertex, FordFulkersonLink, FordFulkersonGraph] {
-  override protected def graphCopy(vertexes: Set[FordFulkersonVertex], links: Set[FordFulkersonLink], bindings: Set[ArcBinding]): FordFulkersonGraph =
+  extends VisualGraph[FordFulkersonVertex, FordFulkersonLink]
+    with TopologyCacheDirectedGraph[FordFulkersonVertex, FordFulkersonLink] {
+  override protected def graphCopy(vertexes: Set[FordFulkersonVertex], links: Set[FordFulkersonLink], bindings: Set[ArcBinding]): this.type =
     copy(
       vertexes = vertexes,
       links = links,
       bindings = bindings
-    )
+    ).asInstanceOf[this.type]
 }

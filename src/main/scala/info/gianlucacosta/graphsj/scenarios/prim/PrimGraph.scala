@@ -8,12 +8,12 @@ case class PrimGraph(
                       links: Set[PrimLink] = Set(),
                       bindings: Set[ArcBinding] = Set()
                     )
-  extends VisualGraph[PrimVertex, PrimLink, PrimGraph]
-    with TopologyCacheDirectedGraph[PrimVertex, PrimLink, PrimGraph] {
-  override protected def graphCopy(vertexes: Set[PrimVertex], links: Set[PrimLink], bindings: Set[ArcBinding]): PrimGraph =
+  extends VisualGraph[PrimVertex, PrimLink]
+    with TopologyCacheDirectedGraph[PrimVertex, PrimLink] {
+  override protected def graphCopy(vertexes: Set[PrimVertex], links: Set[PrimLink], bindings: Set[ArcBinding]): this.type =
     copy(
       vertexes = vertexes,
       links = links,
       bindings = bindings
-    )
+    ).asInstanceOf[this.type]
 }

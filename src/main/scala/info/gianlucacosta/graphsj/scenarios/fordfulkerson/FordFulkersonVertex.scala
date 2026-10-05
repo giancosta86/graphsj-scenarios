@@ -17,7 +17,7 @@ case class FordFulkersonVertex(
                        name: String = "",
                        @transient selected: Boolean = false,
                        id: UUID = UUID.randomUUID()
-                     ) extends BasicVertex[FordFulkersonVertex] with Named[FordFulkersonVertex] {
+                     ) extends BasicVertex with Named {
 
   override val text: String =
     tag.map { tag =>
@@ -32,13 +32,13 @@ case class FordFulkersonVertex(
       .getOrElse(name)
 
 
-  override def visualCopy(center: Point2D, selected: Boolean): FordFulkersonVertex =
+  override def visualCopy(center: Point2D, selected: Boolean): this.type =
     copy(
       center = center,
       selected = selected
-    )
+    ).asInstanceOf[this.type]
 
 
-  override def nameCopy(name: String): FordFulkersonVertex =
-    copy(name = name)
+  override def nameCopy(name: String): this.type =
+    copy(name = name).asInstanceOf[this.type]
 }

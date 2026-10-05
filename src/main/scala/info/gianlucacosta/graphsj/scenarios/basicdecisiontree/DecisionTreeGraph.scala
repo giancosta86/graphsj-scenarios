@@ -177,7 +177,7 @@ case class DecisionTreeGraph private(
                                       vertexes: Set[DecisionTreeVertex],
                                       links: Set[DecisionTreeLink],
                                       bindings: Set[ArcBinding]
-                                    ) extends VisualGraph[DecisionTreeVertex, DecisionTreeLink, DecisionTreeGraph] {
+                                    ) extends VisualGraph[DecisionTreeVertex, DecisionTreeLink] {
   def this() = this(
     Set(
       InstructionsVertex
@@ -187,10 +187,10 @@ case class DecisionTreeGraph private(
   )
 
 
-  override protected def graphCopy(vertexes: Set[DecisionTreeVertex], links: Set[DecisionTreeLink], bindings: Set[ArcBinding]): DecisionTreeGraph =
+  override protected def graphCopy(vertexes: Set[DecisionTreeVertex], links: Set[DecisionTreeLink], bindings: Set[ArcBinding]): this.type =
     copy(
       vertexes = vertexes,
       links = links,
       bindings = bindings
-    )
+    ).asInstanceOf[this.type]
 }

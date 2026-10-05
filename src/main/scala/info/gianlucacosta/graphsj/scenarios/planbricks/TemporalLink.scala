@@ -13,12 +13,12 @@ case class TemporalLink(
   override def text: String =
     ""
 
-  override def visualCopy(internalPoints: List[Point2D], selected: Boolean, labelCenter: Option[Point2D]): TemporalLink =
+  override def visualCopy(internalPoints: List[Point2D], selected: Boolean, labelCenter: Option[Point2D]): this.type =
     copy(
       internalPoints = internalPoints,
       selected = selected,
       labelCenter = labelCenter
-    )
+    ).asInstanceOf[this.type]
 
   override def styleClasses: List[String] =
     List("temporalLink")

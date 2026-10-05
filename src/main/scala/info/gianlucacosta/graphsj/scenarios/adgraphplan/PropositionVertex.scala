@@ -41,9 +41,9 @@ case class PropositionVertex(
     List("propositionVertex")
 
 
-  override def visualCopy(center: Point2D, selected: Boolean): PropositionVertex =
+  override def visualCopy(center: Point2D, selected: Boolean): this.type =
     copy(
       center = center,
       selected = selected
-    )
+    ).asInstanceOf[this.type]
 }

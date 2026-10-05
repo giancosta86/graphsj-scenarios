@@ -21,17 +21,6 @@ class SppAlgorithm extends Algorithm[SppVertex, SppLink, SppGraph] {
       .mkString("[", ", ", "]")
   }
 
-  //TODO! Duplicated!
-  private def getMinWeightBetween(graph: SppGraph, sourceVertex: SppVertex, targetVertex: SppVertex): Double = {
-    graph.getArcsBetween(sourceVertex, targetVertex)
-      .map(_.weight)
-      .toList
-      .sorted
-      .headOption
-      .getOrElse(Double.PositiveInfinity)
-  }
-
-
   override def runStep(stepIndex: Int, graph: SppGraph, console: OutputConsole): (SppGraph, Boolean) = {
     stepIndex match {
       case 0 =>
@@ -75,7 +64,7 @@ class SppAlgorithm extends Algorithm[SppVertex, SppLink, SppGraph] {
         .map(vertex =>
           vertex.copy(
             previousVertex = Some(startVertex),
-            pathLength = Some(getMinWeightBetween(graph, startVertex, vertex))
+            pathLength = Some(graph.getMinArcWeightBetween(startVertex, vertex))
           )
         )
 
@@ -118,7 +107,7 @@ class SppAlgorithm extends Algorithm[SppVertex, SppLink, SppGraph] {
 
     vList = vList.map(vertex => {
       var currentPathLength = vBar.pathLength.get
-      var minWeightFromVBarToVertex = getMinWeightBetween(graph, vBar, vertex)
+      var minWeightFromVBarToVertex = graph.getMinArcWeightBetween(vBar, vertex)
 
       val recomputedPathLength = currentPathLength + minWeightFromVBarToVertex
 
@@ -149,7 +138,7 @@ class SppAlgorithm extends Algorithm[SppVertex, SppLink, SppGraph] {
     val link: SppLink =
       graph.getLinksBetween(Set(vBar.previousVertex.get, vBar))
         .filter(link =>
-          link.weight == getMinWeightBetween(graph, vBar.previousVertex.get, vBar)
+          link.weight == graph.getMinArcWeightBetween(vBar.previousVertex.get, vBar)
         )
         .head
 

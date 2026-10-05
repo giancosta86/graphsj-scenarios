@@ -5,7 +5,7 @@ import info.gianlucacosta.eighthbridge.graphs.point2point.visual.VisualGraph
 
 import scalafx.geometry.Point2D
 
-class FordFulkersonDesignController[G <: VisualGraph[FordFulkersonVertex, FordFulkersonLink, G]] extends VertexNamingController[FordFulkersonVertex, FordFulkersonLink, G] with WeightLinkController[FordFulkersonVertex, FordFulkersonLink, G] {
+class FordFulkersonDesignController[G <: VisualGraph[FordFulkersonVertex, FordFulkersonLink]] extends VertexNamingController[FordFulkersonVertex, FordFulkersonLink, G] with WeightLinkController[FordFulkersonVertex, FordFulkersonLink, G] {
   override protected def instantiateVertex(center: Point2D, vertexName: String): FordFulkersonVertex =
     new FordFulkersonVertex(center = center, name = vertexName)
 

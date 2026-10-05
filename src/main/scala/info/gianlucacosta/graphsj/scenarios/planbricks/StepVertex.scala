@@ -15,7 +15,7 @@ case class StepVertex(
                        isThreat: Boolean = false,
                        selected: Boolean = false,
                        id: UUID = UUID.randomUUID()
-                     ) extends BasicVertex[StepVertex] {
+                     ) extends BasicVertex {
 
 
   @transient
@@ -27,11 +27,11 @@ case class StepVertex(
     step.signature
 
 
-  override def visualCopy(center: Point2D, selected: Boolean): StepVertex =
+  override def visualCopy(center: Point2D, selected: Boolean): this.type =
     copy(
       center = center,
       selected = selected
-    )
+    ).asInstanceOf[this.type]
 
   override def styleClasses: List[String] =
     if (isThreat)

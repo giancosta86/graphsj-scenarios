@@ -14,17 +14,17 @@ case class DecisionTreeLink(
                              internalPoints: List[Point2D] = List(),
                              labelCenter: Option[Point2D] = None,
                              id: UUID = UUID.randomUUID()
-                           ) extends BasicLink[DecisionTreeLink] {
+                           ) extends BasicLink {
   override def text: String =
     s"Value: ${targetTreeLeaf.attributeValue}\nWeight: ${Numbers.smartString(targetTreeLeaf.weight)}"
 
 
-  override def visualCopy(internalPoints: List[Point2D], selected: Boolean, labelCenter: Option[Point2D]): DecisionTreeLink =
+  override def visualCopy(internalPoints: List[Point2D], selected: Boolean, labelCenter: Option[Point2D]): this.type =
     copy(
       internalPoints = internalPoints,
       selected = selected,
       labelCenter = labelCenter
-    )
+    ).asInstanceOf[this.type]
 
 
   override def styleClasses: List[String] =

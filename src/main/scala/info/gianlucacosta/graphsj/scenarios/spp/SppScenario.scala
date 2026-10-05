@@ -38,7 +38,7 @@ class SppScenario extends Scenario[SppVertex, SppLink, SppGraph] {
 
 
   override def createDesignController(): GraphCanvasController[SppVertex, SppLink, SppGraph] =
-    new SppDesignController[SppGraph]
+    new SppDesignController
 
 
   override def createRuntimeController(): GraphCanvasController[SppVertex, SppLink, SppGraph] =
