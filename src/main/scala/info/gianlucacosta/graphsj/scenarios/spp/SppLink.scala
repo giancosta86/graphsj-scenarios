@@ -19,12 +19,9 @@ case class SppLink(weight: Double,
   val minWeight = 0.0
   val maxWeight = Double.MaxValue
 
-  checkWeight()
-
-
   override val text: String = Numbers.smartString(weight)
 
-  override def weightCopy(weight: Double): this.type =
+  override def setWeight(weight: Double): this.type =
     copy(weight = weight).asInstanceOf[this.type]
 
   override def visualCopy(

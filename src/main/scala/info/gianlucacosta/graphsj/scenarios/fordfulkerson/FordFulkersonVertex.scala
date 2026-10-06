@@ -31,7 +31,7 @@ case class FordFulkersonVertex(
       .getOrElse(name)
 
 
-  override def nameCopy(name: String): this.type =
+  override def setName(name: String): this.type =
     copy(name = name).asInstanceOf[this.type]
 
   override def visualCopy(

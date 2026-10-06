@@ -282,9 +282,9 @@ object PopGraph {
     * @return
     */
   private def getSequentialChains(graph: PopGraph): Map[UUID, Set[UUID]] = {
-    graph.fold(Map[UUID, Set[UUID]]())((cumulatedChains, enteringArcs, vertex, exitingArcs, _) => {
+    graph.fold(Map[UUID, Set[UUID]]())((cumulatedChains, vertex, vertexTopology) => {
       val mergedEnteringChain: Set[UUID] =
-        enteringArcs
+        vertexTopology.enteringArcs
           .flatMap(enteringArc =>
             cumulatedChains(enteringArc.id)
           )
@@ -295,7 +295,7 @@ object PopGraph {
 
 
       val exitingChains: Set[(UUID, Set[UUID])] =
-        exitingArcs.map(exitingArc =>
+        vertexTopology.exitingArcs.map(exitingArc =>
           exitingArc.id ->
             (vertexChain + exitingArc.id)
         )

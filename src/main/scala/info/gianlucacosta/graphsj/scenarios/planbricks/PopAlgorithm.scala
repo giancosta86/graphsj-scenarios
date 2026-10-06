@@ -55,8 +55,8 @@ class PopAlgorithm extends Algorithm[StepVertex, PopLink, PopGraph] {
 
         val linearPlan: List[Step] =
           graph
-            .fold(List[Step]())((cumulatedSteps, _, currentVertex, _, _) => {
-              currentVertex.step :: cumulatedSteps
+            .fold(List[Step]())((cumulatedSteps, vertex, _) => {
+              vertex.step :: cumulatedSteps
             })
             .reverse
 
