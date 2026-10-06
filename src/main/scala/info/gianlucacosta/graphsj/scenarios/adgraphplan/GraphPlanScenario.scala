@@ -1,7 +1,7 @@
 package info.gianlucacosta.graphsj.scenarios.adgraphplan
 
-import info.gianlucacosta.eighthbridge.fx.canvas.GraphCanvasController
-import info.gianlucacosta.eighthbridge.fx.canvas.basic.{BasicStyles, DragDropController}
+import info.gianlucacosta.eighthbridge.fx.controllers.DragDropController
+import info.gianlucacosta.eighthbridge.fx.{GraphCanvasController, Styles}
 import info.gianlucacosta.graphsj.{Algorithm, Scenario}
 import info.gianlucacosta.helios.desktop.DesktopUtils
 import info.gianlucacosta.lambdaprism.planning.problem.Problem
@@ -23,7 +23,7 @@ object GraphPlanScenario {
 
   val Stylesheets =
     List(
-      BasicStyles.resourceUrl.toExternalForm,
+      Styles.resourceUrl.toExternalForm,
       getClass.getResource("GraphPlan.css").toExternalForm
     )
 }

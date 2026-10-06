@@ -20,16 +20,6 @@ class FordFulkersonAlgorithm extends Algorithm[FordFulkersonVertex, FordFulkerso
   }
 
 
-  private def getMinWeightBetween(graph: FordFulkersonGraph, vertexes: Set[FordFulkersonVertex]): Double = {
-    graph.getLinksBetween(vertexes)
-      .map(_.weight)
-      .toList
-      .sorted
-      .headOption
-      .getOrElse(Double.PositiveInfinity)
-  }
-
-
   override def runStep(stepIndex: Int, graph: FordFulkersonGraph, console: OutputConsole): (FordFulkersonGraph, Boolean) = {
     stepIndex match {
       case 0 =>

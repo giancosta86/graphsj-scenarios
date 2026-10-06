@@ -1,7 +1,6 @@
 package info.gianlucacosta.graphsj.scenarios.planbricks
 
-import info.gianlucacosta.eighthbridge.fx.canvas.GraphCanvasController
-import info.gianlucacosta.eighthbridge.fx.canvas.basic.BasicStyles
+import info.gianlucacosta.eighthbridge.fx.{GraphCanvasController, Styles}
 import info.gianlucacosta.graphsj.{Algorithm, Scenario}
 import info.gianlucacosta.helios.desktop.DesktopUtils
 import info.gianlucacosta.helios.fx.dialogs.Alerts
@@ -49,7 +48,7 @@ class PopScenario(private var problem: Problem) extends Scenario[StepVertex, Pop
 
   override def stylesheets: List[String] =
     List(
-      BasicStyles.resourceUrl.toExternalForm,
+      Styles.resourceUrl.toExternalForm,
       getClass.getResource("POP.css").toExternalForm
     )
 

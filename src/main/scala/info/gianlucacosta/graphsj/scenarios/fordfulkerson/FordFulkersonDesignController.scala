@@ -1,7 +1,7 @@
 package info.gianlucacosta.graphsj.scenarios.fordfulkerson
 
-import info.gianlucacosta.eighthbridge.fx.canvas.VisualGraph
-import info.gianlucacosta.eighthbridge.fx.canvas.basic.editing.{VertexNamingController, WeightLinkController}
+import info.gianlucacosta.eighthbridge.fx.VisualGraph
+import info.gianlucacosta.eighthbridge.fx.controllers.{VertexNamingController, WeightLinkController}
 import scalafx.geometry.Point2D
 
 class FordFulkersonDesignController[G <: VisualGraph[FordFulkersonVertex, FordFulkersonLink]] extends VertexNamingController[FordFulkersonVertex, FordFulkersonLink, G] with WeightLinkController[FordFulkersonVertex, FordFulkersonLink, G] {

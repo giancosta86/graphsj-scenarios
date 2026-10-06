@@ -1,11 +1,10 @@
 package info.gianlucacosta.graphsj.scenarios.basicdecisiontree
 
-import info.gianlucacosta.eighthbridge.fx.canvas.GraphCanvasController
-import info.gianlucacosta.eighthbridge.fx.canvas.basic.{BasicStyles, DragDropController, ReadOnlyController}
+import info.gianlucacosta.eighthbridge.fx.controllers.{DragDropController, ReadOnlyController}
+import info.gianlucacosta.eighthbridge.fx.{GraphCanvasController, Styles}
 import info.gianlucacosta.graphsj.{Algorithm, Scenario}
 import info.gianlucacosta.helios.desktop.DesktopUtils
 import info.gianlucacosta.lambdaprism.classification.basic.{ClassificationProblem, ClassificationProblemDialog}
-
 import scalafx.geometry.Dimension2D
 
 object DecisionTreeScenario {
@@ -14,7 +13,7 @@ object DecisionTreeScenario {
 
   val Stylesheets: List[String] =
     List(
-      BasicStyles.resourceUrl.toExternalForm,
+      Styles.resourceUrl.toExternalForm,
       getClass.getResource("BasicDecisionTree.css").toExternalForm
     )
 

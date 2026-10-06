@@ -1,6 +1,6 @@
 package info.gianlucacosta.graphsj.scenarios.spp
 
-import info.gianlucacosta.eighthbridge.fx.canvas.VisualGraph
+import info.gianlucacosta.eighthbridge.fx.VisualGraph
 import info.gianlucacosta.eighthbridge.graphs.point2point.ArcBinding
 
 case class SppGraph(

@@ -1,7 +1,6 @@
 package info.gianlucacosta.graphsj.scenarios.prim
 
-import info.gianlucacosta.eighthbridge.fx.canvas.basic.editing.{VertexNamingController, WeightLinkController}
-
+import info.gianlucacosta.eighthbridge.fx.controllers.{VertexNamingController, WeightLinkController}
 import scalafx.geometry.Point2D
 
 class PrimDesignController extends VertexNamingController[PrimVertex, PrimLink, PrimGraph] with WeightLinkController[PrimVertex, PrimLink, PrimGraph] {

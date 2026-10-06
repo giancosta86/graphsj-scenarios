@@ -1,7 +1,8 @@
 package info.gianlucacosta.graphsj.scenarios.adgraphplan
 
-import java.util.UUID
+import info.gianlucacosta.eighthbridge.fx.{LinkArrow, LinkHandleRadius}
 
+import java.util.UUID
 import scalafx.geometry.Point2D
 
 case class AddLink(
@@ -12,10 +13,18 @@ case class AddLink(
                   ) extends ConstructionLink {
 
 
-  override val styleClasses: List[String] =
-    List("addLink")
+  override val styleClasses: Set[String] =
+    Set("addLink")
 
-  override def visualCopy(internalPoints: List[Point2D], selected: Boolean, labelCenter: Option[Point2D]): this.type =
+  override def visualCopy(
+                           text: String,
+                           internalPoints: List[Point2D],
+                           selected: Boolean,
+                           labelCenter: Option[Point2D],
+                           arrow: LinkArrow,
+                           handleRadius: LinkHandleRadius,
+                           styleClasses: Set[String]
+                         ): AddLink.this.type =
     copy(
       internalPoints = internalPoints,
       selected = selected,

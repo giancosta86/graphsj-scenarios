@@ -1,8 +1,7 @@
 package info.gianlucacosta.graphsj.scenarios.adgraphplan
 
-import info.gianlucacosta.eighthbridge.fx.canvas.basic.BasicVertexNode
-import info.gianlucacosta.eighthbridge.fx.canvas.basic.BasicVertexNode.DimensionQuery
-
+import info.gianlucacosta.eighthbridge.fx.DefaultVertexNode.DimensionQuery
+import info.gianlucacosta.eighthbridge.fx.{DefaultVertexNode, VertexNode}
 import scalafx.geometry.{Dimension2D, Point2D}
 
 trait ConstructionLevel[TItem, TVertex <: ConstructionVertex] {
@@ -18,7 +17,7 @@ trait ConstructionLevel[TItem, TVertex <: ConstructionVertex] {
 
   private val itemDimensions: Map[TItem, Dimension2D] =
     items.zip(
-      BasicVertexNode.getDimensions(
+      DefaultVertexNode.getDimensions(
         GraphPlanScenario.Stylesheets,
 
         items.map(item =>

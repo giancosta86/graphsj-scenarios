@@ -37,11 +37,16 @@ case class PropositionVertex(
     PropositionVertex.formatProposition(proposition, mutexes)
 
 
-  override val styleClasses: List[String] =
-    List("propositionVertex")
+  override val styleClasses: Set[String] =
+    Set("propositionVertex")
 
 
-  override def visualCopy(center: Point2D, selected: Boolean): this.type =
+  override def visualCopy(
+                           text: String,
+                           center: Point2D,
+                           selected: Boolean,
+                           styleClasses: Set[String]
+                         ): PropositionVertex.this.type =
     copy(
       center = center,
       selected = selected

@@ -1,11 +1,9 @@
 package info.gianlucacosta.graphsj.scenarios.planbricks
 
-import info.gianlucacosta.eighthbridge.fx.canvas.basic.BasicController
-import info.gianlucacosta.eighthbridge.fx.canvas.{GraphCanvas, VertexNode}
-
+import info.gianlucacosta.eighthbridge.fx.{GraphCanvas, GraphCanvasController, VertexNode}
 import scalafx.geometry.{Dimension2D, Point2D}
 
-trait PopController extends BasicController[StepVertex, PopLink, PopGraph] {
+trait PopController extends GraphCanvasController[StepVertex, PopLink, PopGraph] {
   override def createVertexNode(graphCanvas: GraphCanvas[StepVertex, PopLink, PopGraph], vertex: StepVertex): VertexNode[StepVertex, PopLink, PopGraph] =
     new StepVertexNode(graphCanvas, vertex.step)
 

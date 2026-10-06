@@ -1,12 +1,11 @@
 package info.gianlucacosta.graphsj.scenarios.planbricks
 
-import info.gianlucacosta.eighthbridge.fx.canvas.GraphCanvas
-import info.gianlucacosta.eighthbridge.fx.canvas.basic.BasicVertexNodeMixin
+import info.gianlucacosta.eighthbridge.fx.{GraphCanvas, VertexNode}
 import info.gianlucacosta.lambdaprism.logic.basic.formulas.Literal
 import info.gianlucacosta.lambdaprism.planning.problem.Step
 
 import scala.collection.JavaConversions._
-import scalafx.Includes._
+import info.gianlucacosta.helios.fx.Includes._
 import scalafx.beans.property.ReadOnlyDoubleProperty
 import scalafx.geometry.Pos
 import scalafx.scene.Group
@@ -20,7 +19,7 @@ class StepVertexNode(
                       val graphCanvas: GraphCanvas[StepVertex, PopLink, PopGraph],
                       step: Step
                     )
-  extends Group with BasicVertexNodeMixin[StepVertex, PopLink, PopGraph] {
+  extends Group with VertexNode[StepVertex, PopLink, PopGraph] {
 
   private val signatureLabel =
     new Label {

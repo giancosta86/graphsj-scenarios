@@ -1,7 +1,8 @@
 package info.gianlucacosta.graphsj.scenarios.fordfulkerson
 
+import info.gianlucacosta.eighthbridge.fx.VisualVertex
+
 import java.util.UUID
-import info.gianlucacosta.eighthbridge.fx.canvas.basic.BasicVertex
 import info.gianlucacosta.eighthbridge.graphs.features.Named
 import info.gianlucacosta.helios.mathutils.Numbers
 import scalafx.geometry.Point2D
@@ -11,11 +12,11 @@ case class FordFulkersonVertex(
                        explored: Option[Boolean] = None,
                        tag: Option[FordFulkersonTag] = None,
                        center: Point2D,
-                       styleClasses: List[String] = List(),
+                       styleClasses: Set[String] = Set(),
                        name: String = "",
                        @transient selected: Boolean = false,
                        id: UUID = UUID.randomUUID()
-                     ) extends BasicVertex with Named {
+                     ) extends VisualVertex with Named {
 
   override val text: String =
     tag.map { tag =>
@@ -30,13 +31,18 @@ case class FordFulkersonVertex(
       .getOrElse(name)
 
 
-  override def visualCopy(center: Point2D, selected: Boolean): this.type =
-    copy(
-      center = center,
-      selected = selected
-    ).asInstanceOf[this.type]
-
-
   override def nameCopy(name: String): this.type =
     copy(name = name).asInstanceOf[this.type]
+
+  override def visualCopy(
+                           text: String,
+                           center: Point2D,
+                           selected: Boolean,
+                           styleClasses: Set[String]
+                         ): FordFulkersonVertex.this.type =
+    copy(
+      center = center,
+      selected = selected,
+      styleClasses = styleClasses
+    ).asInstanceOf[this.type]
 }

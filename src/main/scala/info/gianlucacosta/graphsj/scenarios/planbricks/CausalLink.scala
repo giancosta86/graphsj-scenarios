@@ -1,10 +1,10 @@
 package info.gianlucacosta.graphsj.scenarios.planbricks
 
-import java.util.UUID
+import info.gianlucacosta.eighthbridge.fx.{LinkArrow, LinkHandleRadius}
 
+import java.util.UUID
 import info.gianlucacosta.lambdaprism.logic.basic.formulas.Literal
 import info.gianlucacosta.lambdaprism.logic.basic.matching.Environment
-
 import scalafx.geometry.Point2D
 
 
@@ -29,20 +29,27 @@ case class CausalLink(
   }
 
 
-  override def visualCopy(internalPoints: List[Point2D], selected: Boolean, labelCenter: Option[Point2D]): this.type =
+  override def styleClasses: Set[String] =
+    if (threats.isEmpty)
+      Set("causalLink")
+    else
+      Set(
+        "causalLink",
+        "threatened"
+      )
+
+  override def visualCopy(
+                           text: String,
+                           internalPoints: List[Point2D],
+                           selected: Boolean,
+                           labelCenter: Option[Point2D],
+                           arrow: LinkArrow,
+                           handleRadius: LinkHandleRadius,
+                           styleClasses: Set[String]
+                         ): CausalLink.this.type =
     copy(
       internalPoints = internalPoints,
       selected = selected,
       labelCenter = labelCenter
     ).asInstanceOf[this.type]
-
-
-  override def styleClasses: List[String] =
-    if (threats.isEmpty)
-      List("causalLink")
-    else
-      List(
-        "causalLink",
-        "threatened"
-      )
 }

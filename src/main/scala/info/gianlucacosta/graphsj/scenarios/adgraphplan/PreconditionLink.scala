@@ -1,7 +1,8 @@
 package info.gianlucacosta.graphsj.scenarios.adgraphplan
 
-import java.util.UUID
+import info.gianlucacosta.eighthbridge.fx.{LinkArrow, LinkHandleRadius}
 
+import java.util.UUID
 import scalafx.geometry.Point2D
 
 case class PreconditionLink(
@@ -12,11 +13,19 @@ case class PreconditionLink(
                            ) extends ConstructionLink {
 
 
-  override val styleClasses: List[String] =
-    List("preconditionLink")
+  override val styleClasses: Set[String] =
+    Set("preconditionLink")
 
 
-  override def visualCopy(internalPoints: List[Point2D], selected: Boolean, labelCenter: Option[Point2D]): this.type =
+  override def visualCopy(
+                           text: String,
+                           internalPoints: List[Point2D],
+                           selected: Boolean,
+                           labelCenter: Option[Point2D],
+                           arrow: LinkArrow,
+                           handleRadius: LinkHandleRadius,
+                           styleClasses: Set[String]
+                         ): PreconditionLink.this.type =
     copy(
       internalPoints = internalPoints,
       selected = selected,

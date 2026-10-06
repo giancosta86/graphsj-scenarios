@@ -143,7 +143,7 @@ class SppAlgorithm extends Algorithm[SppVertex, SppLink, SppGraph] {
 
     val newLink =
       link.copy(
-        styleClasses = List("solution")
+        styleClasses = Set("solution")
       )
 
     pathEdges = pathEdges ::: List((vBar.previousVertex.get, vBar));

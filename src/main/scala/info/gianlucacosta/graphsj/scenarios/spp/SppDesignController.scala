@@ -1,7 +1,6 @@
 package info.gianlucacosta.graphsj.scenarios.spp
 
-import info.gianlucacosta.eighthbridge.fx.canvas.basic.editing.{VertexNamingController, WeightLinkController}
-
+import info.gianlucacosta.eighthbridge.fx.controllers.{VertexNamingController, WeightLinkController}
 import scalafx.geometry.Point2D
 
 class SppDesignController extends VertexNamingController[SppVertex, SppLink, SppGraph] with WeightLinkController[SppVertex, SppLink, SppGraph] {

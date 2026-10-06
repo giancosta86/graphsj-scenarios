@@ -22,13 +22,17 @@ case class TreeRootVertex(
   override def text: String =
     TreeRootVertex.formatAttribute(decisionTree.attribute)
 
+  override def styleClasses: Set[String] =
+    Set()
 
-  override def visualCopy(center: Point2D, selected: Boolean): this.type =
+  override def visualCopy(
+                           text: String,
+                           center: Point2D,
+                           selected: Boolean,
+                           styleClasses: Set[String]
+                         ): TreeRootVertex.this.type =
     copy(
       center = center,
       selected = selected
     ).asInstanceOf[this.type]
-
-  override def styleClasses: List[String] =
-    List()
 }

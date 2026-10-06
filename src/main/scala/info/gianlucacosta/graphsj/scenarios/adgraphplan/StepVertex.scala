@@ -38,11 +38,16 @@ case class StepVertex(
     StepVertex.formatStep(step, mutexes)
 
 
-  override val styleClasses: List[String] =
-    List("stepVertex")
+  override val styleClasses: Set[String] =
+    Set("stepVertex")
 
 
-  override def visualCopy(center: Point2D, selected: Boolean): this.type =
+  override def visualCopy(
+                           text: String,
+                           center: Point2D,
+                           selected: Boolean,
+                           styleClasses: Set[String]
+                         ): StepVertex.this.type =
     copy(
       center = center,
       selected = selected

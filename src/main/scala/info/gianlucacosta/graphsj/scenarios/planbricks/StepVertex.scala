@@ -1,11 +1,10 @@
 package info.gianlucacosta.graphsj.scenarios.planbricks
 
-import java.util.UUID
+import info.gianlucacosta.eighthbridge.fx.VisualVertex
 
-import info.gianlucacosta.eighthbridge.fx.canvas.basic.BasicVertex
+import java.util.UUID
 import info.gianlucacosta.lambdaprism.logic.basic.formulas.Literal
 import info.gianlucacosta.lambdaprism.planning.problem.Step
-
 import scalafx.geometry.Point2D
 
 case class StepVertex(
@@ -15,7 +14,7 @@ case class StepVertex(
                        isThreat: Boolean = false,
                        selected: Boolean = false,
                        id: UUID = UUID.randomUUID()
-                     ) extends BasicVertex {
+                     ) extends VisualVertex {
 
 
   @transient
@@ -27,17 +26,21 @@ case class StepVertex(
     step.signature
 
 
-  override def visualCopy(center: Point2D, selected: Boolean): this.type =
+  override def styleClasses: Set[String] =
+    if (isThreat)
+      Set("threat")
+    else if (unsatisfiedPreconditions.isEmpty)
+      Set("satisfiedStep")
+    else
+      Set()
+
+  override def visualCopy(
+                           text: String,
+                           center: Point2D,
+                           selected: Boolean,
+                           styleClasses: Set[String]): StepVertex.this.type =
     copy(
       center = center,
       selected = selected
     ).asInstanceOf[this.type]
-
-  override def styleClasses: List[String] =
-    if (isThreat)
-      List("threat")
-    else if (unsatisfiedPreconditions.isEmpty)
-      List("satisfiedStep")
-    else
-      List()
 }

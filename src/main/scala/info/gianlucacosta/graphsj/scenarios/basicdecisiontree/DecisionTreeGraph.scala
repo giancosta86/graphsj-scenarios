@@ -1,8 +1,7 @@
 package info.gianlucacosta.graphsj.scenarios.basicdecisiontree
 
-import info.gianlucacosta.eighthbridge.fx.canvas.VisualGraph
-import info.gianlucacosta.eighthbridge.fx.canvas.basic.BasicVertexNode
-import info.gianlucacosta.eighthbridge.fx.canvas.basic.BasicVertexNode.DimensionQuery
+import info.gianlucacosta.eighthbridge.fx.{DefaultVertexNode, VisualGraph}
+import info.gianlucacosta.eighthbridge.fx.DefaultVertexNode.DimensionQuery
 import info.gianlucacosta.eighthbridge.graphs.point2point.ArcBinding
 import info.gianlucacosta.lambdaprism.classification.basic.{DecisionTree, DecisionTreeLeaf, Value}
 import scalafx.geometry.{Dimension2D, Point2D}
@@ -11,7 +10,7 @@ import scalafx.geometry.{Dimension2D, Point2D}
 object DecisionTreeGraph {
   def apply(decisionTree: DecisionTree): DecisionTreeGraph = {
     val rootVertexDimension: Dimension2D =
-      BasicVertexNode.getDimensions(
+      DefaultVertexNode.getDimensions(
         DecisionTreeScenario.Stylesheets,
         List(
           DimensionQuery(
@@ -40,7 +39,7 @@ object DecisionTreeGraph {
 
     val leafVertexDimensions: Map[Value, Dimension2D] =
       treeLeavesList.map(_.attributeValue).zip(
-        BasicVertexNode.getDimensions(
+        DefaultVertexNode.getDimensions(
           DecisionTreeScenario.Stylesheets,
           leafQueries
         )

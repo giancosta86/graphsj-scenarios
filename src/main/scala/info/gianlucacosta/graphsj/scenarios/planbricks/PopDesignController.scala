@@ -1,7 +1,7 @@
 package info.gianlucacosta.graphsj.scenarios.planbricks
 
-import info.gianlucacosta.eighthbridge.fx.canvas.GraphCanvas
-import info.gianlucacosta.eighthbridge.fx.canvas.basic.DragDropController
+import info.gianlucacosta.eighthbridge.fx.GraphCanvas
+import info.gianlucacosta.eighthbridge.fx.controllers.DragDropController
 import info.gianlucacosta.eighthbridge.graphs.point2point.CircularGraphException
 import info.gianlucacosta.helios.fx.dialogs.{Alerts, InputDialogs}
 import info.gianlucacosta.helios.fx.geometry.DiagonalBounds

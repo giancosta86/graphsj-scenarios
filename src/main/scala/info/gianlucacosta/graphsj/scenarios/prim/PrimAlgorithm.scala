@@ -160,7 +160,7 @@ class PrimAlgorithm extends Algorithm[PrimVertex, PrimLink, PrimGraph] {
 
     val newLink =
       link.copy(
-        styleClasses = List("solution")
+        styleClasses = Set("solution")
       )
 
     val newGraph =

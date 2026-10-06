@@ -1,5 +1,5 @@
 package info.gianlucacosta.graphsj.scenarios.planbricks
 
-import info.gianlucacosta.eighthbridge.fx.canvas.basic.BasicLink
+import info.gianlucacosta.eighthbridge.fx.VisualLink
 
-trait PopLink extends BasicLink
+trait PopLink extends VisualLink
