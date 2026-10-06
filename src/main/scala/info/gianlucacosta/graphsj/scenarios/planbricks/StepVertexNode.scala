@@ -6,6 +6,7 @@ import info.gianlucacosta.lambdaprism.planning.problem.Step
 
 import scala.collection.JavaConversions._
 import info.gianlucacosta.helios.fx.Includes._
+import scalafx.Includes._
 import scalafx.beans.property.ReadOnlyDoubleProperty
 import scalafx.geometry.Pos
 import scalafx.scene.Group
