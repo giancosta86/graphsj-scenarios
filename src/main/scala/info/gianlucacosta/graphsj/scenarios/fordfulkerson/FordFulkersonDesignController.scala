@@ -1,16 +1,20 @@
 package info.gianlucacosta.graphsj.scenarios.fordfulkerson
 
-import info.gianlucacosta.eighthbridge.fx.VisualGraph
-import info.gianlucacosta.eighthbridge.fx.controllers.{VertexNamingController, WeightLinkController}
+import info.gianlucacosta.eighthbridge.fx.controller.{AdvancedLayoutEditing, Directed, LinkWeightEditing, VertexNameEditing}
+import info.gianlucacosta.eighthbridge.fx.{GraphCanvasController, VisualGraph}
 import scalafx.geometry.Point2D
 
-class FordFulkersonDesignController[G <: VisualGraph[FordFulkersonVertex, FordFulkersonLink]] extends VertexNamingController[FordFulkersonVertex, FordFulkersonLink, G] with WeightLinkController[FordFulkersonVertex, FordFulkersonLink, G] {
-  override protected def instantiateVertex(center: Point2D, vertexName: String): FordFulkersonVertex =
-    new FordFulkersonVertex(center = center, name = vertexName)
+class FordFulkersonDesignController extends GraphCanvasController[FordFulkersonVertex, FordFulkersonLink, FordFulkersonGraph]
+  with AdvancedLayoutEditing[FordFulkersonVertex, FordFulkersonLink, FordFulkersonGraph]
+  with VertexNameEditing[FordFulkersonVertex, FordFulkersonLink, FordFulkersonGraph]
+  with LinkWeightEditing[FordFulkersonVertex, FordFulkersonLink, FordFulkersonGraph]
+  with Directed[FordFulkersonVertex, FordFulkersonLink, FordFulkersonGraph] {
+  override protected def createNamedVertex(center: Point2D, vertexName: String): FordFulkersonVertex =
+    FordFulkersonVertex(center = center, name = vertexName)
 
 
-  override def createLink(graph: G, sourceVertex: FordFulkersonVertex, targetVertex: FordFulkersonVertex): Option[G] = {
-    val link = new FordFulkersonLink(
+  override def createLink(sourceVertex: FordFulkersonVertex, targetVertex: FordFulkersonVertex): Option[FordFulkersonGraph] = {
+    val link = FordFulkersonLink(
       weight = 0
     )
 
@@ -18,8 +22,4 @@ class FordFulkersonDesignController[G <: VisualGraph[FordFulkersonVertex, FordFu
       graph.addLink(sourceVertex, targetVertex, link)
     )
   }
-
-
-  override def renderDirected: Boolean =
-    true
 }

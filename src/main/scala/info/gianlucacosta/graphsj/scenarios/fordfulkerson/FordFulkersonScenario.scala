@@ -1,7 +1,7 @@
 package info.gianlucacosta.graphsj.scenarios.fordfulkerson
 
+import info.gianlucacosta.eighthbridge.fx.controller.{AdvancedLayoutEditing, Directed, LayoutEditing}
 import info.gianlucacosta.eighthbridge.fx.{GraphCanvasController, Styles}
-import info.gianlucacosta.eighthbridge.fx.controllers.DragDropController
 import info.gianlucacosta.graphsj.{Algorithm, Scenario}
 import info.gianlucacosta.helios.desktop.DesktopUtils
 import info.gianlucacosta.helios.fx.dialogs.Alerts
@@ -38,11 +38,12 @@ class FordFulkersonScenario extends Scenario[FordFulkersonVertex, FordFulkersonL
 
 
   override def createDesignController(): GraphCanvasController[FordFulkersonVertex, FordFulkersonLink, FordFulkersonGraph] =
-    new FordFulkersonDesignController[FordFulkersonGraph]
+    new FordFulkersonDesignController
 
 
   override def createRuntimeController(): GraphCanvasController[FordFulkersonVertex, FordFulkersonLink, FordFulkersonGraph] =
-    new DragDropController[FordFulkersonVertex, FordFulkersonLink, FordFulkersonGraph](renderDirected = false)
+    new LayoutEditing[FordFulkersonVertex, FordFulkersonLink, FordFulkersonGraph]
+      with Directed[FordFulkersonVertex, FordFulkersonLink, FordFulkersonGraph]
 
 
   override def createDesignGraph(): FordFulkersonGraph =

@@ -1,7 +1,7 @@
 package info.gianlucacosta.graphsj.scenarios.planbricks
 
 import info.gianlucacosta.eighthbridge.fx.GraphCanvas
-import info.gianlucacosta.eighthbridge.fx.controllers.DragDropController
+import info.gianlucacosta.eighthbridge.fx.controller.{Directed, LayoutEditing}
 import info.gianlucacosta.eighthbridge.graphs.point2point.CircularGraphException
 import info.gianlucacosta.helios.fx.dialogs.{Alerts, InputDialogs}
 import info.gianlucacosta.helios.fx.geometry.DiagonalBounds
@@ -13,9 +13,7 @@ import info.gianlucacosta.lambdaprism.planning.problem.{Action, Problem}
 import scala.annotation.tailrec
 import scalafx.geometry.Point2D
 
-class PopDesignController(problem: Problem)
-  extends DragDropController[StepVertex, PopLink, PopGraph](true)
-    with PopController {
+class PopDesignController(problem: Problem) extends PopController {
 
   private case class CausalMatch(
                                   effect: Literal,
@@ -27,7 +25,7 @@ class PopDesignController(problem: Problem)
   }
 
 
-  override def createVertex(graph: PopGraph, center: Point2D): Option[PopGraph] = {
+  override def createVertex(center: Point2D): Option[PopGraph] = {
     val actionOption =
       InputDialogs.askForItem(
         "Please, choose an action:",
@@ -108,7 +106,7 @@ class PopDesignController(problem: Problem)
   }
 
 
-  override def createLink(graph: PopGraph, sourceVertex: StepVertex, targetVertex: StepVertex): Option[PopGraph] = {
+  override def createLink(sourceVertex: StepVertex, targetVertex: StepVertex): Option[PopGraph] = {
     if (sourceVertex == graph.goalVertex) {
       Alerts.showWarning("The goal vertex cannot be the source of an arc!")
       None
@@ -260,7 +258,7 @@ class PopDesignController(problem: Problem)
   }
 
 
-  override def deleteSelection(graphCanvas: GraphCanvas[StepVertex, PopLink, PopGraph], graph: PopGraph): Option[PopGraph] = {
+  override def deleteSelection(): Option[PopGraph] = {
     Some(
       graph
         .removeLinks(

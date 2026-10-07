@@ -1,7 +1,7 @@
 package info.gianlucacosta.graphsj.scenarios.spp
 
+import info.gianlucacosta.eighthbridge.fx.controller.{Directed, LayoutEditing}
 import info.gianlucacosta.eighthbridge.fx.{GraphCanvasController, Styles}
-import info.gianlucacosta.eighthbridge.fx.controllers.DragDropController
 import info.gianlucacosta.graphsj.{Algorithm, Scenario}
 import info.gianlucacosta.helios.desktop.DesktopUtils
 import info.gianlucacosta.helios.fx.dialogs.Alerts
@@ -42,7 +42,8 @@ class SppScenario extends Scenario[SppVertex, SppLink, SppGraph] {
 
 
   override def createRuntimeController(): GraphCanvasController[SppVertex, SppLink, SppGraph] =
-    new DragDropController[SppVertex, SppLink, SppGraph](renderDirected = true)
+    new LayoutEditing[SppVertex, SppLink, SppGraph]
+      with Directed[SppVertex, SppLink, SppGraph]
 
 
   override def createDesignGraph(): SppGraph =

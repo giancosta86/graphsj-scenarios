@@ -1,7 +1,7 @@
 package info.gianlucacosta.graphsj.scenarios.prim
 
+import info.gianlucacosta.eighthbridge.fx.controller.{LayoutEditing, Undirected}
 import info.gianlucacosta.eighthbridge.fx.{GraphCanvasController, Styles}
-import info.gianlucacosta.eighthbridge.fx.controllers.DragDropController
 import info.gianlucacosta.graphsj.{Algorithm, Scenario}
 import info.gianlucacosta.helios.desktop.DesktopUtils
 import info.gianlucacosta.helios.fx.dialogs.Alerts
@@ -42,7 +42,8 @@ class PrimScenario extends Scenario[PrimVertex, PrimLink, PrimGraph] {
 
 
   override def createRuntimeController(): GraphCanvasController[PrimVertex, PrimLink, PrimGraph] =
-    new DragDropController[PrimVertex, PrimLink, PrimGraph](renderDirected = false)
+    new LayoutEditing[PrimVertex,PrimLink, PrimGraph]
+      with Undirected[PrimVertex, PrimLink, PrimGraph]
 
 
   override def createDesignGraph(): PrimGraph =

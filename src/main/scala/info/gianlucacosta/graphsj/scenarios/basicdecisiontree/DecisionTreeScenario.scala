@@ -1,6 +1,6 @@
 package info.gianlucacosta.graphsj.scenarios.basicdecisiontree
 
-import info.gianlucacosta.eighthbridge.fx.controllers.{DragDropController, ReadOnlyController}
+import info.gianlucacosta.eighthbridge.fx.controller.{Directed, LayoutEditing}
 import info.gianlucacosta.eighthbridge.fx.{GraphCanvasController, Styles}
 import info.gianlucacosta.graphsj.{Algorithm, Scenario}
 import info.gianlucacosta.helios.desktop.DesktopUtils
@@ -32,7 +32,8 @@ class DecisionTreeScenario(private var problem: ClassificationProblem) extends S
 
 
   override def createDesignController(): GraphCanvasController[DecisionTreeVertex, DecisionTreeLink, DecisionTreeGraph] =
-    new ReadOnlyController[DecisionTreeVertex, DecisionTreeLink, DecisionTreeGraph](true)
+    new GraphCanvasController[DecisionTreeVertex, DecisionTreeLink, DecisionTreeGraph]
+      with Directed[DecisionTreeVertex, DecisionTreeLink, DecisionTreeGraph]
 
 
   override def runStepsBeforePausing: Int =
@@ -44,10 +45,11 @@ class DecisionTreeScenario(private var problem: ClassificationProblem) extends S
 
 
   override def createRuntimeController(): GraphCanvasController[DecisionTreeVertex, DecisionTreeLink, DecisionTreeGraph] =
-    new DragDropController[DecisionTreeVertex, DecisionTreeLink, DecisionTreeGraph](true) {
-      override def minCanvasDimension: Dimension2D =
-        new Dimension2D(1500, 1500)
-    }
+    new LayoutEditing[DecisionTreeVertex, DecisionTreeLink, DecisionTreeGraph]
+      with Directed[DecisionTreeVertex , DecisionTreeLink, DecisionTreeGraph]{
+        override def minCanvasDimension: Dimension2D =
+          new Dimension2D(1500, 1500)
+      }
 
 
   override def showHelp(): Unit =

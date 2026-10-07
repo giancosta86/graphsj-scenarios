@@ -1,6 +1,6 @@
 package info.gianlucacosta.graphsj.scenarios.adgraphplan
 
-import info.gianlucacosta.eighthbridge.fx.controllers.DragDropController
+import info.gianlucacosta.eighthbridge.fx.controller.{LayoutEditing, Undirected}
 import info.gianlucacosta.eighthbridge.fx.{GraphCanvasController, Styles}
 import info.gianlucacosta.graphsj.{Algorithm, Scenario}
 import info.gianlucacosta.helios.desktop.DesktopUtils
@@ -40,11 +40,13 @@ class GraphPlanScenario(private var problem: Problem)
 
 
   override def createDesignController(): GraphCanvasController[ConstructionVertex, ConstructionLink, ConstructionGraph] =
-    new DragDropController[ConstructionVertex, ConstructionLink, ConstructionGraph](false)
+    new LayoutEditing[ConstructionVertex, ConstructionLink, ConstructionGraph]
+      with Undirected[ConstructionVertex, ConstructionLink, ConstructionGraph]
 
 
   override def createRuntimeController(): GraphCanvasController[ConstructionVertex, ConstructionLink, ConstructionGraph] =
-    new DragDropController[ConstructionVertex, ConstructionLink, ConstructionGraph](false)
+    new LayoutEditing[ConstructionVertex, ConstructionLink, ConstructionGraph]
+      with Undirected[ConstructionVertex, ConstructionLink, ConstructionGraph]
 
 
   override val stylesheets: List[String] =
