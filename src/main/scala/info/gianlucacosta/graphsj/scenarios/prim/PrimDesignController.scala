@@ -1,25 +1,24 @@
 package info.gianlucacosta.graphsj.scenarios.prim
 
-import info.gianlucacosta.eighthbridge.fx.GraphCanvasController
-import info.gianlucacosta.eighthbridge.fx.controller.{AdvancedLayoutEditing, LinkWeightEditing, Undirected, VertexNameEditing}
+import info.gianlucacosta.eighthbridge.fx.arcnodes.labeled.LabeledArcNode
+import info.gianlucacosta.eighthbridge.fx.{ArcNode, GraphCanvasController, VertexNode}
+import info.gianlucacosta.eighthbridge.fx.controller.{AdvancedLayoutEditing, Undirected, VertexNameEditing}
+import info.gianlucacosta.eighthbridge.fx.graph.{NamedVisualVertex, VisualVertex}
+import info.gianlucacosta.eighthbridge.fx.vertexnodes.labeled.LabeledVertexNode
+import info.gianlucacosta.eighthbridge.theory.features.Named
 import scalafx.geometry.Point2D
 
-class PrimDesignController extends GraphCanvasController[PrimVertex, PrimLink, PrimGraph]
-  with AdvancedLayoutEditing[PrimVertex, PrimLink, PrimGraph]
-  with VertexNameEditing[PrimVertex, PrimLink, PrimGraph]
-  with LinkWeightEditing[PrimVertex, PrimLink, PrimGraph]
-  with Undirected[PrimVertex, PrimLink, PrimGraph] {
-  override protected def createNamedVertex(center: Point2D, vertexName: String): PrimVertex =
-    PrimVertex(center = center, name = vertexName)
+class PrimDesignController extends GraphCanvasController
+  with AdvancedLayoutEditing
+  with VertexNameEditing
+  with Undirected {
 
+  override def createVertexNode(): VertexNode =
+    new LabeledVertexNode()
 
-  override def createLink(sourceVertex: PrimVertex, targetVertex: PrimVertex): Option[PrimGraph] = {
-    val link = PrimLink(
-      weight = 0
-    )
+  override def createArcNode(): ArcNode =
+    new LabeledArcNode()
 
-    Some(
-      graph.addLink(sourceVertex, targetVertex, link)
-    )
-  }
+  override protected def createNamedVertex(center: Point2D, vertexName: String): VisualVertex with Named =
+    new NamedVisualVertex(center, vertexName)
 }

@@ -1,17 +1,10 @@
 package info.gianlucacosta.graphsj.scenarios.prim
 
-import info.gianlucacosta.graphsj.{Algorithm, OutputConsole}
-import info.gianlucacosta.helios.fx.dialogs.InputDialogs
-import info.gianlucacosta.helios.mathutils.Numbers
-
+import info.gianlucacosta.graphsj.sdk.{Algorithm, OutputConsole}
 import scala.language.implicitConversions
 
 
-class PrimAlgorithm extends Algorithm[PrimVertex, PrimLink, PrimGraph] {
-  private var vList: List[PrimVertex] = _
-  private var wList: List[PrimVertex] = _
-  private var vBar: PrimVertex = _
-
+class PrimAlgorithm extends Algorithm[PrimVertex, PrimEdge, PrimGraph] {
   private var treeWeight: Double = 0
 
   private var treeBindings: List[(PrimVertex, PrimVertex)] = _
@@ -19,30 +12,25 @@ class PrimAlgorithm extends Algorithm[PrimVertex, PrimLink, PrimGraph] {
   val verbose = true //This basic algorithm version is always verbose
 
 
-  private def edgeBindingsAsString(edgeBindings: List[(PrimVertex, PrimVertex)]): String = {
-    edgeBindings
-      .map(binding => s"{${binding._1.name}, ${binding._2.name}}")
-      .mkString("[", ", ", "]")
-  }
-
   override def runStep(stepIndex: Int, graph: PrimGraph, console: OutputConsole): (PrimGraph, Boolean) = {
-    stepIndex match {
+    /*stepIndex match {
       case 0 =>
         init(graph, console)
 
       case _ =>
         runStandardStep(stepIndex, graph, console)
-    }
+    }*/
+    (graph, false)
   }
 
 
   private def init(graph: PrimGraph, console: OutputConsole): (PrimGraph, Boolean) = {
-    if (graph.vertexes.isEmpty) {
-      throw new RuntimeException("No vertex defined!")
+    /*if (graph.isEmpty) {
+      throw new RuntimeException("Empty graph!")
     }
 
-    if (graph.unlinkedVertexes.nonEmpty) {
-      throw new RuntimeException("Every vertex in the graph must be connected!")
+    if (graph.isolatedVertexes.nonEmpty) {
+      throw new RuntimeException("There are isolated vertexes!")
     }
 
     vList = graph
@@ -108,12 +96,13 @@ class PrimAlgorithm extends Algorithm[PrimVertex, PrimLink, PrimGraph] {
         ),
 
       true
-      )
+      )*/
+    (graph, false)
   }
 
 
   private def runStandardStep(stepIndex: Int, graph: PrimGraph, console: OutputConsole): (PrimGraph, Boolean) = {
-    if (verbose) {
+    /*if (verbose) {
       console.writeHeader("Step " + stepIndex)
       console.writeln()
     }
@@ -208,6 +197,7 @@ class PrimAlgorithm extends Algorithm[PrimVertex, PrimLink, PrimGraph] {
       (newGraph, false)
     } else {
       (newGraph, true)
-    }
+    }*/
+    (graph, false)
   }
 }
