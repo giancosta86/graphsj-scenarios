@@ -13,19 +13,18 @@ class PrimAlgorithm extends Algorithm[PrimVertex, PrimEdge, PrimGraph] {
 
 
   override def runStep(stepIndex: Int, graph: PrimGraph, console: OutputConsole): (PrimGraph, Boolean) = {
-    /*stepIndex match {
+    stepIndex match {
       case 0 =>
         init(graph, console)
 
       case _ =>
         runStandardStep(stepIndex, graph, console)
-    }*/
-    (graph, false)
+    }
   }
 
 
   private def init(graph: PrimGraph, console: OutputConsole): (PrimGraph, Boolean) = {
-    /*if (graph.isEmpty) {
+    if (graph.isEmpty) {
       throw new RuntimeException("Empty graph!")
     }
 
@@ -33,7 +32,7 @@ class PrimAlgorithm extends Algorithm[PrimVertex, PrimEdge, PrimGraph] {
       throw new RuntimeException("There are isolated vertexes!")
     }
 
-    vList = graph
+    /*vList = graph
       .vertexes
       .toList
       .sortBy(_.text)
