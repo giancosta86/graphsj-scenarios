@@ -1,6 +1,6 @@
 package info.gianlucacosta.graphsj.scenarios.prim
 
-import info.gianlucacosta.eighthbridge.fx.controller.{LayoutEditing, Undirected}
+import info.gianlucacosta.eighthbridge.fx.controller.composite.NonStructuralEditing
 import info.gianlucacosta.eighthbridge.fx.graph.VisualGraph
 import info.gianlucacosta.eighthbridge.fx.{GraphCanvasController, Styles}
 import info.gianlucacosta.graphsj.sdk.{Algorithm, Scenario}
@@ -43,8 +43,7 @@ class PrimScenario extends Scenario[PrimVertex, PrimEdge, PrimGraph] {
 
 
   override def createRuntimeController(): GraphCanvasController =
-    new LayoutEditing
-      with Undirected
+    new GraphCanvasController with NonStructuralEditing
 
 
   override def createDesignGraph(): VisualGraph =
