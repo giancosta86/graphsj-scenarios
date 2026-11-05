@@ -1,11 +1,14 @@
 package info.gianlucacosta.graphsj.scenarios.prim
 
-import info.gianlucacosta.eighthbridge.fx.controller.composite.NonStructuralEditing
-import info.gianlucacosta.eighthbridge.fx.graph.VisualGraph
+import info.gianlucacosta.eighthbridge.fx.controller.advanced.{CreateNamedVertex, EditNamedVertex}
+import info.gianlucacosta.eighthbridge.fx.controller.composite.{NonStructuralEditing, StructuralEditing}
+import info.gianlucacosta.eighthbridge.fx.graph.{ArcBarbs, LabeledVisualLink, NamedVisualVertex, VisualGraph, VisualVertex}
 import info.gianlucacosta.eighthbridge.fx.{GraphCanvasController, Styles}
+import info.gianlucacosta.eighthbridge.graphs.features.Named
 import info.gianlucacosta.graphsj.sdk.{Algorithm, Scenario}
 import info.gianlucacosta.helios.desktop.DesktopUtils
 import info.gianlucacosta.helios.fx.dialogs.Alerts
+import scalafx.geometry.Point2D
 
 
 object PrimScenario {
@@ -39,11 +42,26 @@ class PrimScenario extends Scenario[PrimVertex, PrimEdge, PrimGraph] {
 
 
   override def createDesignController(): GraphCanvasController =
-    new PrimDesignController
+    new PrimControllerBase with StructuralEditing
+      with CreateNamedVertex
+      with EditNamedVertex {
+
+      override protected def createNamedVertex(center: Point2D, vertexName: String): VisualVertex with Named =
+        new NamedVisualVertex(center, vertexName)
+
+      override def addLink(sourceVertex: VisualVertex, targetVertex: VisualVertex): Unit = {
+        graph =
+          graph.addArc(
+            sourceVertex,
+            targetVertex,
+            new LabeledVisualLink(Some(ArcBarbs.Default), "Dodo")
+          )
+      }
+    }
 
 
   override def createRuntimeController(): GraphCanvasController =
-    new GraphCanvasController with NonStructuralEditing
+    new PrimControllerBase with NonStructuralEditing
 
 
   override def createDesignGraph(): VisualGraph =
