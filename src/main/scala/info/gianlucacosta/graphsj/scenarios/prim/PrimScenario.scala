@@ -20,7 +20,7 @@ object PrimScenario {
 }
 
 
-class PrimScenario extends Scenario[PrimVertex, PrimEdge, PrimGraph] {
+class PrimScenario extends Scenario {
   override val name: String =
     PrimScenario.Name
 
@@ -30,14 +30,14 @@ class PrimScenario extends Scenario[PrimVertex, PrimEdge, PrimGraph] {
   }
 
 
-  override def showSettings(designGraph: PrimGraph): Option[PrimGraph] = {
+  override def showSettings(designGraph: VisualGraph): Option[VisualGraph] = {
     Alerts.showInfo("No settings available for this scenario.")
 
     None
   }
 
 
-  override def createAlgorithm(): Algorithm[PrimVertex, PrimEdge, PrimGraph] =
+  override def createAlgorithm(): Algorithm =
     new PrimAlgorithm
 
 

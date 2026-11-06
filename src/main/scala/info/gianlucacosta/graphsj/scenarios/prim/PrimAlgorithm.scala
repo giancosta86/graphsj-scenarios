@@ -1,10 +1,12 @@
 package info.gianlucacosta.graphsj.scenarios.prim
 
+import info.gianlucacosta.eighthbridge.fx.graph.{VisualGraph, VisualLink}
 import info.gianlucacosta.graphsj.sdk.{Algorithm, OutputConsole}
+
 import scala.language.implicitConversions
 
 
-class PrimAlgorithm extends Algorithm[PrimVertex, PrimEdge, PrimGraph] {
+class PrimAlgorithm extends Algorithm {
   private var treeWeight: Double = 0
 
   private var treeBindings: List[(PrimVertex, PrimVertex)] = _
@@ -12,7 +14,7 @@ class PrimAlgorithm extends Algorithm[PrimVertex, PrimEdge, PrimGraph] {
   val verbose = true //This basic algorithm version is always verbose
 
 
-  override def runStep(stepIndex: Int, graph: PrimGraph, console: OutputConsole): (PrimGraph, Boolean) = {
+  override def runStep(stepIndex: Int, graph: VisualGraph, console: OutputConsole): (VisualGraph, Boolean) = {
     stepIndex match {
       case 0 =>
         init(graph, console)
@@ -23,7 +25,7 @@ class PrimAlgorithm extends Algorithm[PrimVertex, PrimEdge, PrimGraph] {
   }
 
 
-  private def init(graph: PrimGraph, console: OutputConsole): (PrimGraph, Boolean) = {
+  private def init(graph: VisualGraph, console: OutputConsole): (VisualGraph, Boolean) = {
     if (graph.isEmpty) {
       throw new RuntimeException("Empty graph!")
     }
@@ -100,7 +102,7 @@ class PrimAlgorithm extends Algorithm[PrimVertex, PrimEdge, PrimGraph] {
   }
 
 
-  private def runStandardStep(stepIndex: Int, graph: PrimGraph, console: OutputConsole): (PrimGraph, Boolean) = {
+  private def runStandardStep(stepIndex: Int, graph: VisualGraph, console: OutputConsole): (VisualGraph, Boolean) = {
     /*if (verbose) {
       console.writeHeader("Step " + stepIndex)
       console.writeln()
