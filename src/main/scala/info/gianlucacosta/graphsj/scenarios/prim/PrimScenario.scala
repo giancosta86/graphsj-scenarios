@@ -5,6 +5,7 @@ import info.gianlucacosta.eighthbridge.fx.controller.creation.CreateVertexWithNa
 import info.gianlucacosta.eighthbridge.fx.controller.editing.EditVertexName
 import info.gianlucacosta.eighthbridge.fx.graph.{ArcBarbs, LabeledVisualLink, NamedVisualVertex, VisualGraph, VisualVertex}
 import info.gianlucacosta.eighthbridge.fx.{GraphCanvasController, Styles}
+import info.gianlucacosta.graphsj.scenarios.classic.ClassicDesignVertex
 import info.gianlucacosta.graphsj.sdk.{Algorithm, Scenario}
 import info.gianlucacosta.helios.desktop.DesktopUtils
 import info.gianlucacosta.helios.fx.dialogs.Alerts
@@ -46,8 +47,11 @@ class PrimScenario extends Scenario {
       with CreateVertexWithName
       with EditVertexName {
 
-      override protected def createNamedVertex(center: Point2D, vertexName: String): NamedVisualVertex =
-        new NamedVisualVertex
+      override protected def createNamedVertex(center: Point2D, vertexName: String): ClassicDesignVertex =
+        new ClassicDesignVertex()
+          .setCenter(center)
+          .setName(vertexName)
+
 
       override def addLink(sourceVertex: VisualVertex, targetVertex: VisualVertex): Unit = {
         graph =
