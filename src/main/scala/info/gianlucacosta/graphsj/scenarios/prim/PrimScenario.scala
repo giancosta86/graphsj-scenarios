@@ -1,7 +1,8 @@
 package info.gianlucacosta.graphsj.scenarios.prim
 
-import info.gianlucacosta.eighthbridge.fx.controller.advanced.{CreateNamedVertex, EditNamedVertex}
 import info.gianlucacosta.eighthbridge.fx.controller.composite.{NonStructuralEditing, StructuralEditing}
+import info.gianlucacosta.eighthbridge.fx.controller.creation.CreateVertexWithName
+import info.gianlucacosta.eighthbridge.fx.controller.editing.EditVertexName
 import info.gianlucacosta.eighthbridge.fx.graph.{ArcBarbs, LabeledVisualLink, NamedVisualVertex, VisualGraph, VisualVertex}
 import info.gianlucacosta.eighthbridge.fx.{GraphCanvasController, Styles}
 import info.gianlucacosta.graphsj.sdk.{Algorithm, Scenario}
@@ -42,8 +43,8 @@ class PrimScenario extends Scenario {
 
   override def createDesignController(): GraphCanvasController =
     new PrimControllerBase with StructuralEditing
-      with CreateNamedVertex
-      with EditNamedVertex {
+      with CreateVertexWithName
+      with EditVertexName {
 
       override protected def createNamedVertex(center: Point2D, vertexName: String): NamedVisualVertex =
         new NamedVisualVertex
