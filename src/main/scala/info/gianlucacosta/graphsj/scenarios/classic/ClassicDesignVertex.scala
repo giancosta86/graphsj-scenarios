@@ -10,4 +10,7 @@ class ClassicDesignVertex
     with HasLabel {
   override def label: String =
     name
+
+  override def styleClasses: Set[String] =
+    Set[String]()
 }

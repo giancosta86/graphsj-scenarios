@@ -3,7 +3,7 @@ package info.gianlucacosta.graphsj.scenarios.prim
 import info.gianlucacosta.eighthbridge.fx.controller.composite.{NonStructuralEditing, StructuralEditing}
 import info.gianlucacosta.eighthbridge.fx.controller.creation.CreateVertexWithName
 import info.gianlucacosta.eighthbridge.fx.controller.editing.EditVertexName
-import info.gianlucacosta.eighthbridge.fx.graph.{ArcBarbs, LabeledVisualLink, NamedVisualVertex, VisualGraph, VisualVertex}
+import info.gianlucacosta.eighthbridge.fx.graph.{VisualGraph, VisualVertex}
 import info.gianlucacosta.eighthbridge.fx.{GraphCanvasController, Styles}
 import info.gianlucacosta.graphsj.scenarios.classic.ClassicDesignVertex
 import info.gianlucacosta.graphsj.sdk.{Algorithm, Scenario}
@@ -58,7 +58,8 @@ class PrimScenario extends Scenario {
           graph.addArc(
             sourceVertex,
             targetVertex,
-            new LabeledVisualLink().setArcBarbs(Some(ArcBarbs.Default)).setLabel("NewDodo")
+            new PrimTestLink()
+              .setLabel("NewDodo")
           )
       }
     }
