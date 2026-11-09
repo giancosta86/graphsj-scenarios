@@ -55,7 +55,7 @@ class PrimScenario extends Scenario {
 
       override def addLink(sourceVertex: VisualVertex, targetVertex: VisualVertex): Unit = {
         graph =
-          graph.addArc(
+          graph.addLink(
             sourceVertex,
             targetVertex,
             new PrimTestLink()
