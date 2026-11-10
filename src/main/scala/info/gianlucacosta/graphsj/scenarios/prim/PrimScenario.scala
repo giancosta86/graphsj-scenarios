@@ -58,8 +58,8 @@ class PrimScenario extends Scenario {
           graph.addLink(
             sourceVertex,
             targetVertex,
-            new PrimTestLink()
-              .setLabel("NewDodo")
+            new PrimLink()
+              .setLabel("FacetedDodo")
           )
       }
     }
