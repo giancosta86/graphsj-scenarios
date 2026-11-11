@@ -3,69 +3,24 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>info.gianlucacosta.aurora</groupId>
+        <artifactId>scala-base</artifactId>
+        <version>10.0.0-SNAPSHOT</version>
+    </parent>
+
     <groupId>info.gianlucacosta.graphsj</groupId>
     <artifactId>graphsj-scenarios</artifactId>
     <version>7.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <description>GraphsJ - Example scenarios</description>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <scala.version>2.11.8</scala.version>
-    </properties>
+    <description>GraphsJ - Scenarios</description>
 
     <dependencies>
-        <!-- Core Scala Library -->
-        <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala-library</artifactId>
-            <version>${scala.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>info.gianlucacosta.graphsj</groupId>
             <artifactId>graphsj-sdk</artifactId>
             <version>7.0.0-SNAPSHOT</version>
         </dependency>
-        <!--
-        testCompile 'org.scalatest:scalatest_2.11:2.2.6'
-        testRuntime 'org.pegdown:pegdown:1.6.0'
-        -->
     </dependencies>
-
-    <build>
-        <sourceDirectory>src/main/scala</sourceDirectory>
-        <!--<testSourceDirectory>src/test/scala</testSourceDirectory>-->
-
-        <plugins>
-            <!-- Standard Java Compiler Plugin -->
-            <!--<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-            </plugin>-->
-
-            <!-- Scala Compiler and Build Plugin -->
-            <plugin>
-                <groupId>net.alchim31.maven</groupId>
-                <artifactId>scala-maven-plugin</artifactId>
-                <version>4.10.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                            <!--<goal>testCompile</goal> -->
-                            <!--<goal>doc-jar</goal> -->
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <scalaVersion>${scala.version}</scalaVersion>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>
