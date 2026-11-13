@@ -1,8 +1,8 @@
-package info.gianlucacosta.graphsj.scenarios.classic
+package info.gianlucacosta.graphsj.scenarios.classic.design
 
 import info.gianlucacosta.eighthbridge.fx.graph.VisualArc
 import info.gianlucacosta.eighthbridge.graphs.directed.HasBarbsSettable
-import info.gianlucacosta.eighthbridge.graphs.facets.{HasHandlesSettable, HasLabelSettable, HasOptionalCustomLabelCenterSettable, HasSelectedSettable, HasStyleClasses, HasStyleClassesSettable}
+import info.gianlucacosta.eighthbridge.graphs.facets._
 
 //TODO! Revise this test class
 class ClassicDesignArc

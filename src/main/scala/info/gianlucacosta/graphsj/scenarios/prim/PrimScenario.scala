@@ -3,9 +3,9 @@ package info.gianlucacosta.graphsj.scenarios.prim
 import info.gianlucacosta.eighthbridge.fx.controller.composite.{NonStructuralEditing, StructuralEditing}
 import info.gianlucacosta.eighthbridge.fx.controller.creation.CreateVertexWithName
 import info.gianlucacosta.eighthbridge.fx.controller.editing.EditVertexName
-import info.gianlucacosta.eighthbridge.fx.graph.{VisualGraph, VisualDirectedGraph, VisualVertex}
+import info.gianlucacosta.eighthbridge.fx.graph.{VisualDirectedGraph, VisualGraph, VisualUndirectedGraph, VisualVertex}
 import info.gianlucacosta.eighthbridge.fx.{GraphCanvasController, Styles}
-import info.gianlucacosta.graphsj.scenarios.classic.ClassicDesignVertex
+import info.gianlucacosta.graphsj.scenarios.classic.design.ClassicDesignVertex
 import info.gianlucacosta.graphsj.sdk.{Algorithm, Scenario}
 import info.gianlucacosta.helios.desktop.DesktopUtils
 import info.gianlucacosta.helios.fx.dialogs.Alerts
@@ -62,7 +62,7 @@ class PrimScenario extends Scenario {
     new PrimControllerBase with NonStructuralEditing
 
   override def createDesignGraph(): VisualGraph =
-    new VisualDirectedGraph
+    new VisualUndirectedGraph
 
   override def runStepsBeforePausing: Int =
     0

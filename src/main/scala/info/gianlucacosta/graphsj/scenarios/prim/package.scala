@@ -1,7 +1,8 @@
 package info.gianlucacosta.graphsj.scenarios
 
 import info.gianlucacosta.eighthbridge.graphs.directed.DirectedGraph
-import info.gianlucacosta.graphsj.scenarios.classic.{ClassicDesignArc, ClassicDesignVertex}
+import info.gianlucacosta.eighthbridge.graphs.undirected.UndirectedGraph
+import info.gianlucacosta.graphsj.scenarios.classic.design.{ClassicDesignArc, ClassicDesignEdge, ClassicDesignVertex}
 
 
 package object prim {
@@ -9,9 +10,8 @@ package object prim {
     ClassicDesignVertex
 
   type PrimEdge =
-    ClassicDesignArc //TODO! Edge!
+    ClassicDesignEdge
 
-  //TODO! Undirected!
   type PrimGraph =
-    DirectedGraph[PrimVertex, PrimEdge]
+    UndirectedGraph[PrimVertex, PrimEdge]
 }
