@@ -10,5 +10,5 @@ class PrimControllerBase extends GraphCanvasController {
     new LabeledVertexNode(graphCanvas, vertex)
 
   override def createLinkNode(link: VisualLink): LinkNode =
-    new LabeledLinkNode(graphCanvas, link.asInstanceOf[PrimLink])
+    new LabeledLinkNode(graphCanvas, link.asInstanceOf[PrimEdge])
 }

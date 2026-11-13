@@ -3,7 +3,7 @@ package info.gianlucacosta.graphsj.scenarios.prim
 import info.gianlucacosta.eighthbridge.fx.controller.composite.{NonStructuralEditing, StructuralEditing}
 import info.gianlucacosta.eighthbridge.fx.controller.creation.CreateVertexWithName
 import info.gianlucacosta.eighthbridge.fx.controller.editing.EditVertexName
-import info.gianlucacosta.eighthbridge.fx.graph.{VisualGraph, VisualVertex}
+import info.gianlucacosta.eighthbridge.fx.graph.{VisualGraph, VisualDirectedGraph, VisualVertex}
 import info.gianlucacosta.eighthbridge.fx.{GraphCanvasController, Styles}
 import info.gianlucacosta.graphsj.scenarios.classic.ClassicDesignVertex
 import info.gianlucacosta.graphsj.sdk.{Algorithm, Scenario}
@@ -20,16 +20,13 @@ object PrimScenario {
     "https://github.com/giancosta86/graphsj-scenarios"
 }
 
-
 class PrimScenario extends Scenario {
   override val name: String =
     PrimScenario.Name
 
-
   override def showHelp(): Unit = {
     DesktopUtils.openBrowser(PrimScenario.WebsiteUrl)
   }
-
 
   override def showSettings(designGraph: VisualGraph): Option[VisualGraph] = {
     Alerts.showInfo("No settings available for this scenario.")
@@ -37,10 +34,8 @@ class PrimScenario extends Scenario {
     None
   }
 
-
   override def createAlgorithm(): Algorithm =
     new PrimAlgorithm
-
 
   override def createDesignController(): GraphCanvasController =
     new PrimControllerBase with StructuralEditing
@@ -52,26 +47,22 @@ class PrimScenario extends Scenario {
           .setCenter(center)
           .setName(vertexName)
 
-
       override def addLink(sourceVertex: VisualVertex, targetVertex: VisualVertex): Unit = {
         graph =
           graph.addLink(
             sourceVertex,
             targetVertex,
-            new PrimLink()
+            new PrimEdge()
               .setLabel("FacetedDodo")
           )
       }
     }
 
-
   override def createRuntimeController(): GraphCanvasController =
     new PrimControllerBase with NonStructuralEditing
 
-
   override def createDesignGraph(): VisualGraph =
-    new VisualGraph
-
+    new VisualDirectedGraph
 
   override def runStepsBeforePausing: Int =
     0
