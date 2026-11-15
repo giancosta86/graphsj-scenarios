@@ -1,6 +1,6 @@
 package info.gianlucacosta.graphsj.scenarios.classic.design
 
-import info.gianlucacosta.eighthbridge.fx.graph.VisualArc
+import info.gianlucacosta.eighthbridge.fx.VisualArc
 import info.gianlucacosta.eighthbridge.graphs.directed.HasBarbsSettable
 import info.gianlucacosta.eighthbridge.graphs.facets._
 

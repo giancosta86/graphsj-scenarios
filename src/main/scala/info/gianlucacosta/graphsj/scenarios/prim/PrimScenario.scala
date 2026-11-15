@@ -1,9 +1,9 @@
 package info.gianlucacosta.graphsj.scenarios.prim
 
-import info.gianlucacosta.eighthbridge.fx.controller.composite.{NonStructuralEditing, StructuralEditing}
-import info.gianlucacosta.eighthbridge.fx.controller.creation.CreateVertexWithName
-import info.gianlucacosta.eighthbridge.fx.controller.editing.EditVertexName
-import info.gianlucacosta.eighthbridge.fx.graph.{VisualDirectedGraph, VisualGraph, VisualUndirectedGraph, VisualVertex}
+import info.gianlucacosta.eighthbridge.fx.controllers.bundles.{NonStructuralEditing, StructuralEditing}
+import info.gianlucacosta.eighthbridge.fx.controllers.creation.CreateVertexWithName
+import info.gianlucacosta.eighthbridge.fx.controllers.editing.EditVertexName
+import info.gianlucacosta.eighthbridge.fx.{VisualDirectedGraph, VisualGraph, VisualUndirectedGraph, VisualVertex}
 import info.gianlucacosta.eighthbridge.fx.{GraphCanvasController, Styles}
 import info.gianlucacosta.graphsj.scenarios.classic.design.ClassicDesignVertex
 import info.gianlucacosta.graphsj.sdk.{Algorithm, Scenario}

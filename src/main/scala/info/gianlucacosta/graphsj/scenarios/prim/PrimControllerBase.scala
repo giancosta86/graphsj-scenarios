@@ -1,7 +1,7 @@
 package info.gianlucacosta.graphsj.scenarios.prim
 
 import info.gianlucacosta.eighthbridge.fx.{GraphCanvas, GraphCanvasController, LinkNode, VertexNode}
-import info.gianlucacosta.eighthbridge.fx.graph.{VisualLink, VisualVertex}
+import info.gianlucacosta.eighthbridge.fx.{VisualLink, VisualVertex}
 import info.gianlucacosta.eighthbridge.fx.linknodes.labeled.LabeledLinkNode
 import info.gianlucacosta.eighthbridge.fx.vertexnodes.labeled.LabeledVertexNode
 

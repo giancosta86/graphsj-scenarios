@@ -1,6 +1,6 @@
 package info.gianlucacosta.graphsj.scenarios.prim
 
-import info.gianlucacosta.eighthbridge.fx.graph.{VisualGraph, VisualLink}
+import info.gianlucacosta.eighthbridge.fx.{VisualGraph, VisualLink}
 import info.gianlucacosta.graphsj.sdk.{Algorithm, OutputConsole}
 
 import scala.language.implicitConversions
