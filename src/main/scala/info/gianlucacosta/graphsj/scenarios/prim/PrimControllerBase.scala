@@ -1,9 +1,8 @@
 package info.gianlucacosta.graphsj.scenarios.prim
 
-import info.gianlucacosta.eighthbridge.fx.{GraphCanvas, GraphCanvasController, LinkNode, VertexNode}
-import info.gianlucacosta.eighthbridge.fx.{VisualLink, VisualVertex}
 import info.gianlucacosta.eighthbridge.fx.linknodes.labeled.LabeledLinkNode
 import info.gianlucacosta.eighthbridge.fx.vertexnodes.labeled.LabeledVertexNode
+import info.gianlucacosta.eighthbridge.fx.{GraphCanvasController, LinkNode, VertexNode, VisualLink, VisualVertex}
 
 class PrimControllerBase extends GraphCanvasController {
   override def createVertexNode(vertex: VisualVertex): VertexNode =

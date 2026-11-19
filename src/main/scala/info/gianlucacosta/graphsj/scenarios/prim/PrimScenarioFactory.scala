@@ -1,6 +1,6 @@
 package info.gianlucacosta.graphsj.scenarios.prim
 
-import info.gianlucacosta.graphsj.sdk.{Scenario, ScenarioFactory}
+import info.gianlucacosta.graphsj.sdk.ScenarioFactory
 
 class PrimScenarioFactory extends ScenarioFactory {
   override def scenarioName: String =

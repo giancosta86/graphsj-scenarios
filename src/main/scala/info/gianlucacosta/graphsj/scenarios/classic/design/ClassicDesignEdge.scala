@@ -1,7 +1,7 @@
 package info.gianlucacosta.graphsj.scenarios.classic.design
 
+import info.gianlucacosta.eighthbridge.core.facets._
 import info.gianlucacosta.eighthbridge.fx.VisualEdge
-import info.gianlucacosta.eighthbridge.graphs.facets._
 
 //TODO! Weighted links should have a read-only label, returning the toString() of HasWeightBoundedSettable
 

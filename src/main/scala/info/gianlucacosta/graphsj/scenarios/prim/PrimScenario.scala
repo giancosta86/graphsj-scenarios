@@ -3,8 +3,7 @@ package info.gianlucacosta.graphsj.scenarios.prim
 import info.gianlucacosta.eighthbridge.fx.controllers.bundles.{NonStructuralEditing, StructuralEditing}
 import info.gianlucacosta.eighthbridge.fx.controllers.creation.CreateVertexWithName
 import info.gianlucacosta.eighthbridge.fx.controllers.editing.EditVertexName
-import info.gianlucacosta.eighthbridge.fx.{VisualDirectedGraph, VisualGraph, VisualUndirectedGraph, VisualVertex}
-import info.gianlucacosta.eighthbridge.fx.{GraphCanvasController, Styles}
+import info.gianlucacosta.eighthbridge.fx.{GraphCanvasController, Styles, VisualGraph, VisualUndirectedGraph, VisualVertex}
 import info.gianlucacosta.graphsj.scenarios.classic.design.ClassicDesignVertex
 import info.gianlucacosta.graphsj.sdk.{Algorithm, Scenario}
 import info.gianlucacosta.helios.desktop.DesktopUtils
@@ -43,7 +42,7 @@ class PrimScenario extends Scenario {
       with EditVertexName {
 
       override protected def createNamedVertex(center: Point2D, vertexName: String): ClassicDesignVertex =
-        new ClassicDesignVertex()
+        new PrimVertex()
           .setCenter(center)
           .setName(vertexName)
 

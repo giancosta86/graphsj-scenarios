@@ -1,8 +1,8 @@
 //TODO! Move this entire package to the SDK!
 package info.gianlucacosta.graphsj.scenarios.classic.design
 
+import info.gianlucacosta.eighthbridge.core.facets._
 import info.gianlucacosta.eighthbridge.fx.VisualVertex
-import info.gianlucacosta.eighthbridge.graphs.facets._
 
 //TODO: Revise this test class
 class ClassicDesignVertex
