@@ -3,6 +3,7 @@ package info.gianlucacosta.graphsj.scenarios.classic.design
 
 import info.gianlucacosta.eighthbridge.core.facets._
 import info.gianlucacosta.eighthbridge.fx.VisualVertex
+import info.gianlucacosta.eighthbridge.fx.facets.HasCenterSettable
 
 //TODO: Revise this test class
 class ClassicDesignVertex
