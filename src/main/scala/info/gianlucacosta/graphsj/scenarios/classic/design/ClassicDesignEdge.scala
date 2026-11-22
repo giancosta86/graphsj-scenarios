@@ -9,9 +9,5 @@ import info.gianlucacosta.eighthbridge.fx.facets.{HasHandlesSettable, HasOptiona
 //TODO! Revise this test class
 class ClassicDesignEdge
   extends VisualEdge
-    with HasSelectedSettable
-    with HasStyleClassesSettable
-    with HasHandlesSettable
-    with HasLabelSettable
-    with HasOptionalCustomLabelCenterSettable{
-}
+    with ClassicDesignLink
+

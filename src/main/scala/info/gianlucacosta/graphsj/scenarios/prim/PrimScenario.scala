@@ -4,6 +4,7 @@ import info.gianlucacosta.eighthbridge.fx.controllers.bundles.{NonStructuralEdit
 import info.gianlucacosta.eighthbridge.fx.controllers.creation.CreateVertexWithName
 import info.gianlucacosta.eighthbridge.fx.controllers.editing.EditVertexName
 import info.gianlucacosta.eighthbridge.fx.{GraphCanvasController, Styles, VisualGraph, VisualUndirectedGraph, VisualVertex}
+import info.gianlucacosta.graphsj.scenarios.classic.ClassicScenario
 import info.gianlucacosta.graphsj.scenarios.classic.design.ClassicDesignVertex
 import info.gianlucacosta.graphsj.sdk.{Algorithm, Scenario}
 import info.gianlucacosta.helios.desktop.DesktopUtils
@@ -14,27 +15,14 @@ import scalafx.geometry.Point2D
 object PrimScenario {
   val Name: String =
     "Prim's Shortest Spanning Tree (SST)"
-
-  private val WebsiteUrl =
-    "https://github.com/giancosta86/graphsj-scenarios"
 }
 
-class PrimScenario extends Scenario {
+class PrimScenario extends ClassicScenario {
   override val name: String =
     PrimScenario.Name
 
-  override def showHelp(): Unit = {
-    DesktopUtils.openBrowser(PrimScenario.WebsiteUrl)
-  }
-
-  override def showSettings(designGraph: VisualGraph): Option[VisualGraph] = {
-    Alerts.showInfo("No settings available for this scenario.")
-
-    None
-  }
-
   override def createAlgorithm(): Algorithm =
-    new PrimAlgorithm
+    new PrimAlgorithm(verbose)
 
   override def createDesignController(): GraphCanvasController =
     new PrimControllerBase with StructuralEditing
@@ -42,7 +30,7 @@ class PrimScenario extends Scenario {
       with EditVertexName {
 
       override protected def createNamedVertex(center: Point2D, vertexName: String): ClassicDesignVertex =
-        new PrimVertex()
+        new PrimDesignVertex()
           .setCenter(center)
           .setName(vertexName)
 
@@ -51,8 +39,7 @@ class PrimScenario extends Scenario {
           graph.addLink(
             sourceVertex,
             targetVertex,
-            new PrimEdge()
-              .setLabel("FacetedDodo")
+            new PrimDesignEdge()
           )
       }
     }
@@ -62,13 +49,4 @@ class PrimScenario extends Scenario {
 
   override def createDesignGraph(): VisualGraph =
     new VisualUndirectedGraph
-
-  override def runStepsBeforePausing: Int =
-    0
-
-  override def stylesheets: List[String] =
-    List(
-      Styles.resourceUrl.toExternalForm,
-      getClass.getResource("PrimStyles.css").toExternalForm
-    )
 }

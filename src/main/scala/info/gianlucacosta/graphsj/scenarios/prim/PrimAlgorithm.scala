@@ -1,18 +1,16 @@
 package info.gianlucacosta.graphsj.scenarios.prim
 
 import info.gianlucacosta.eighthbridge.fx.VisualGraph
+import info.gianlucacosta.graphsj.scenarios.classic.ClassicAlgorithm
 import info.gianlucacosta.graphsj.sdk.{Algorithm, OutputConsole}
 
 import scala.language.implicitConversions
 
 
-class PrimAlgorithm extends Algorithm {
+class PrimAlgorithm(verbose: Boolean) extends ClassicAlgorithm(verbose) {
   private var treeWeight: Double = 0
 
-  private var treeBindings: List[(PrimVertex, PrimVertex)] = _
-
-  val verbose = true //This basic algorithm version is always verbose
-
+  private var treeBindings: List[(PrimDesignVertex, PrimDesignVertex)] = _
 
   override def runStep(stepIndex: Int, graph: VisualGraph, console: OutputConsole): (VisualGraph, Boolean) = {
     stepIndex match {

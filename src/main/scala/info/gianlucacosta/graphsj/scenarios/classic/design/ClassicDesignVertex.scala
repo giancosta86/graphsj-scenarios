@@ -5,12 +5,10 @@ import info.gianlucacosta.eighthbridge.core.facets._
 import info.gianlucacosta.eighthbridge.fx.VisualVertex
 import info.gianlucacosta.eighthbridge.fx.facets.HasCenterSettable
 
-//TODO: Revise this test class
 class ClassicDesignVertex
   extends VisualVertex
     with HasCenterSettable
     with HasSelectedSettable
-    with HasStyleClassesSettable
     with HasNameSettable
     with HasLabel {
   override def label: String =
