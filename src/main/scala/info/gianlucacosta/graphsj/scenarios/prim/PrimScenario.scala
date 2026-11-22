@@ -1,15 +1,8 @@
 package info.gianlucacosta.graphsj.scenarios.prim
 
-import info.gianlucacosta.eighthbridge.fx.controllers.bundles.{NonStructuralEditing, StructuralEditing}
-import info.gianlucacosta.eighthbridge.fx.controllers.creation.CreateVertexWithName
-import info.gianlucacosta.eighthbridge.fx.controllers.editing.EditVertexName
-import info.gianlucacosta.eighthbridge.fx.{GraphCanvasController, Styles, VisualGraph, VisualUndirectedGraph, VisualVertex}
-import info.gianlucacosta.graphsj.scenarios.classic.{ClassicDesignController, ClassicScenario, UndirectedGraphScenario}
-import info.gianlucacosta.graphsj.scenarios.classic.design.ClassicDesignVertex
-import info.gianlucacosta.graphsj.sdk.{Algorithm, Scenario}
-import info.gianlucacosta.helios.desktop.DesktopUtils
-import info.gianlucacosta.helios.fx.dialogs.Alerts
-import scalafx.geometry.Point2D
+import info.gianlucacosta.eighthbridge.fx.GraphCanvasController
+import info.gianlucacosta.graphsj.scenarios.classic.{ClassicScenario, UndirectedGraphScenario}
+import info.gianlucacosta.graphsj.sdk.Algorithm
 
 
 object PrimScenario {

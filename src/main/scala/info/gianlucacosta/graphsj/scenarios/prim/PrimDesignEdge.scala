@@ -2,7 +2,6 @@ package info.gianlucacosta.graphsj.scenarios.prim
 
 import info.gianlucacosta.eighthbridge.core.facets.{HasLabel, HasWeightBoundedSettable}
 import info.gianlucacosta.graphsj.scenarios.classic.design.ClassicDesignEdge
-import info.gianlucacosta.helios.mathutils.Numbers
 
 class PrimDesignEdge
   extends ClassicDesignEdge

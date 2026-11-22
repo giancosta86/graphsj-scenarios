@@ -2,7 +2,7 @@ package info.gianlucacosta.graphsj.scenarios.prim
 
 import info.gianlucacosta.eighthbridge.fx.VisualGraph
 import info.gianlucacosta.graphsj.scenarios.classic.ClassicAlgorithm
-import info.gianlucacosta.graphsj.sdk.{Algorithm, OutputConsole}
+import info.gianlucacosta.graphsj.sdk.OutputConsole
 
 import scala.language.implicitConversions
 

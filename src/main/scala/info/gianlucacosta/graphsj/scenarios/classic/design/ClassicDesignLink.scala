@@ -1,7 +1,6 @@
 package info.gianlucacosta.graphsj.scenarios.classic.design
 
-import info.gianlucacosta.eighthbridge.core.Link
-import info.gianlucacosta.eighthbridge.core.facets.{HasSelectedSettable, HasStyleClassesSettable}
+import info.gianlucacosta.eighthbridge.core.facets.HasSelectedSettable
 import info.gianlucacosta.eighthbridge.fx.VisualLink
 import info.gianlucacosta.eighthbridge.fx.facets.{HasHandlesSettable, HasOptionalCustomLabelCenterSettable}
 

@@ -1,7 +1,6 @@
 package info.gianlucacosta.graphsj.scenarios.classic
 
 import info.gianlucacosta.eighthbridge.fx.{Styles, VisualGraph}
-import info.gianlucacosta.graphsj.scenarios.prim.PrimScenario
 import info.gianlucacosta.graphsj.sdk.Scenario
 import info.gianlucacosta.helios.desktop.DesktopUtils
 import info.gianlucacosta.helios.fx.dialogs.Alerts
