@@ -4,7 +4,7 @@ import info.gianlucacosta.eighthbridge.fx.controllers.bundles.{NonStructuralEdit
 import info.gianlucacosta.eighthbridge.fx.controllers.creation.CreateVertexWithName
 import info.gianlucacosta.eighthbridge.fx.controllers.editing.EditVertexName
 import info.gianlucacosta.eighthbridge.fx.{GraphCanvasController, Styles, VisualGraph, VisualUndirectedGraph, VisualVertex}
-import info.gianlucacosta.graphsj.scenarios.classic.ClassicScenario
+import info.gianlucacosta.graphsj.scenarios.classic.{ClassicDesignController, ClassicScenario, UndirectedGraphScenario}
 import info.gianlucacosta.graphsj.scenarios.classic.design.ClassicDesignVertex
 import info.gianlucacosta.graphsj.sdk.{Algorithm, Scenario}
 import info.gianlucacosta.helios.desktop.DesktopUtils
@@ -17,7 +17,9 @@ object PrimScenario {
     "Prim's Shortest Spanning Tree (SST)"
 }
 
-class PrimScenario extends ClassicScenario {
+class PrimScenario
+  extends ClassicScenario
+  with UndirectedGraphScenario {
   override val name: String =
     PrimScenario.Name
 
@@ -25,28 +27,8 @@ class PrimScenario extends ClassicScenario {
     new PrimAlgorithm(verbose)
 
   override def createDesignController(): GraphCanvasController =
-    new PrimControllerBase with StructuralEditing
-      with CreateVertexWithName
-      with EditVertexName {
-
-      override protected def createNamedVertex(center: Point2D, vertexName: String): ClassicDesignVertex =
-        new PrimDesignVertex()
-          .setCenter(center)
-          .setName(vertexName)
-
-      override def addLink(sourceVertex: VisualVertex, targetVertex: VisualVertex): Unit = {
-        graph =
-          graph.addLink(
-            sourceVertex,
-            targetVertex,
-            new PrimDesignEdge()
-          )
-      }
-    }
+    new PrimDesignController
 
   override def createRuntimeController(): GraphCanvasController =
-    new PrimControllerBase with NonStructuralEditing
-
-  override def createDesignGraph(): VisualGraph =
-    new VisualUndirectedGraph
+    new PrimRuntimeController
 }

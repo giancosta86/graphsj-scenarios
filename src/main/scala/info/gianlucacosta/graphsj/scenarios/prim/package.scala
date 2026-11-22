@@ -5,12 +5,6 @@ import info.gianlucacosta.graphsj.scenarios.classic.design.{ClassicDesignEdge, C
 
 
 package object prim {
-  type PrimDesignVertex =
-    ClassicDesignVertex
-
-  type PrimDesignEdge =
-    ClassicDesignEdge
-
   type PrimDesignGraph =
     UndirectedGraph[PrimDesignVertex, PrimDesignEdge]
 }
