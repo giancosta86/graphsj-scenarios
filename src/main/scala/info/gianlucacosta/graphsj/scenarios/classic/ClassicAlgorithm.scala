@@ -1,8 +1,7 @@
 package info.gianlucacosta.graphsj.scenarios.classic
 
 import info.gianlucacosta.eighthbridge.core.Graph
-import info.gianlucacosta.eighthbridge.core.directed.DirectedGraph
-import info.gianlucacosta.eighthbridge.fx.{VisualDirectedGraph, VisualGraph, VisualLink, VisualUndirectedGraph, VisualVertex}
+import info.gianlucacosta.eighthbridge.fx.{VisualGraph, VisualLink, VisualVertex}
 import info.gianlucacosta.graphsj.scenarios.classic.design.{ClassicDesignLink, ClassicDesignVertex}
 import info.gianlucacosta.graphsj.scenarios.classic.runtime.{ClassicRuntimeLink, ClassicRuntimeVertex}
 import info.gianlucacosta.graphsj.sdk.{Algorithm, OutputConsole}
@@ -14,7 +13,7 @@ abstract class ClassicAlgorithm(protected val verbose: Boolean) extends Algorith
   protected type DesignLink <:
     ClassicDesignLink
 
-  protected type DesignGraph <:
+  protected type DesignGraph =
     Graph[DesignVertex, DesignLink]
 
   protected type RuntimeVertex <:
@@ -23,7 +22,7 @@ abstract class ClassicAlgorithm(protected val verbose: Boolean) extends Algorith
   protected type RuntimeLink <:
     ClassicRuntimeLink
 
-  protected type RuntimeGraph <:
+  protected type RuntimeGraph =
     Graph[RuntimeVertex, RuntimeLink]
 
   override def runStep(stepIndex: Int, graph: VisualGraph, console: OutputConsole): (VisualGraph, Boolean) = {
@@ -53,9 +52,9 @@ abstract class ClassicAlgorithm(protected val verbose: Boolean) extends Algorith
   protected def createRuntimeGraph(designGraph: DesignGraph): RuntimeGraph = {
     var runtimeGraph: RuntimeGraph = (
       if (designGraph.isDirected)
-        new VisualDirectedGraph
+        Graph.createDirected()
       else
-        new VisualUndirectedGraph
+        Graph.createUndirected()
       ).asInstanceOf[RuntimeGraph]
 
     var runtimeVertexByDesignVertex: Map[DesignVertex, RuntimeVertex] =
@@ -82,7 +81,7 @@ abstract class ClassicAlgorithm(protected val verbose: Boolean) extends Algorith
           runtimeVertexByDesignVertex(secondDesignAnchor)
         )
 
-      val runtimeLink =
+      val runtimeLink: RuntimeLink =
         createRuntimeLink(designLink)
 
       runtimeGraph =
