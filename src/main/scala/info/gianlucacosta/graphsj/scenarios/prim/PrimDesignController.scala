@@ -5,7 +5,7 @@ import info.gianlucacosta.eighthbridge.fx.controllers.editing.{EditLinkWeight, E
 import info.gianlucacosta.eighthbridge.fx.linknodes.labeled.LabeledLinkNode
 import info.gianlucacosta.eighthbridge.fx.vertexnodes.labeled.LabeledVertexNode
 import info.gianlucacosta.eighthbridge.fx.{LinkNode, VertexNode, VisualLink, VisualVertex}
-import info.gianlucacosta.graphsj.scenarios.classic.ClassicDesignController
+import info.gianlucacosta.graphsj.scenarios.classic.design.ClassicDesignController
 import scalafx.geometry.Point2D
 
 class PrimDesignController

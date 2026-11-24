@@ -26,26 +26,26 @@ abstract class ClassicAlgorithm(protected val verbose: Boolean) extends Algorith
     Graph[RuntimeVertex, RuntimeLink]
 
   override def runStep(stepIndex: Int, graph: VisualGraph, console: OutputConsole): (VisualGraph, Boolean) = {
-
     val (nextGraph, shouldGoOn) =
       stepIndex match {
         case 0 =>
-          val runtimeGraph =
+          val runtimeGraph: RuntimeGraph =
             createRuntimeGraph(graph.asInstanceOf[DesignGraph])
 
           onInit(runtimeGraph, console)
 
         case _ =>
-          onRunStep(stepIndex, graph.asInstanceOf[RuntimeGraph], console)
+          onMainStep(stepIndex, graph.asInstanceOf[RuntimeGraph], console)
       }
 
-    if (stepIndex > 0 && !shouldGoOn) {
-      val finalGraph =
-        onExpectedEnd(stepIndex, graph.asInstanceOf[RuntimeGraph], console)
-
-      (finalGraph.asInstanceOf[VisualGraph], false)
+    if (shouldGoOn) {
+      (nextGraph.asInstanceOf[VisualGraph], true)
     } else {
-      (nextGraph.asInstanceOf[VisualGraph], shouldGoOn)
+      val finalGraph: VisualGraph =
+        onExpectedEnd(stepIndex, graph.asInstanceOf[RuntimeGraph], console)
+          .asInstanceOf[VisualGraph] //TODO! Is there no way to delete this upcast and others?
+
+      (finalGraph, false)
     }
   }
 
@@ -64,6 +64,8 @@ abstract class ClassicAlgorithm(protected val verbose: Boolean) extends Algorith
       val runtimeVertex =
         createRuntimeVertex(designVertex)
 
+      //TODO! Copy as many facets as possible!
+
       runtimeVertexByDesignVertex +=
         designVertex -> runtimeVertex
 
@@ -73,7 +75,7 @@ abstract class ClassicAlgorithm(protected val verbose: Boolean) extends Algorith
 
     designGraph.links.foreach(designLink => {
       val (firstDesignAnchor, secondDesignAnchor): (DesignVertex, DesignVertex) =
-        designGraph.getAnchorPair(designLink).get
+        designGraph.anchorsByLink(designLink).toPair
 
       val runtimeAnchors =
         (
@@ -83,6 +85,8 @@ abstract class ClassicAlgorithm(protected val verbose: Boolean) extends Algorith
 
       val runtimeLink: RuntimeLink =
         createRuntimeLink(designLink)
+
+      //TODO! Copy as many facets as possible!
 
       runtimeGraph =
         runtimeGraph.addLink(runtimeAnchors, runtimeLink)
@@ -95,18 +99,22 @@ abstract class ClassicAlgorithm(protected val verbose: Boolean) extends Algorith
 
   protected def createRuntimeLink(designLink: DesignLink): RuntimeLink
 
-
   protected def onInit(graph: RuntimeGraph, console: OutputConsole): (RuntimeGraph, Boolean)
 
-  protected def onRunStep(stepIndex: Int, graph: RuntimeGraph, console: OutputConsole): (RuntimeGraph, Boolean)
+  protected def onMainStep(stepIndex: Int, graph: RuntimeGraph, console: OutputConsole): (RuntimeGraph, Boolean)
 
-  protected def onExpectedEnd(stepIndex: Int, graph: RuntimeGraph, console: OutputConsole): RuntimeGraph
+  protected def onExpectedEnd(stepIndex: Int, graph: RuntimeGraph, console: OutputConsole): RuntimeGraph =
+    graph
 
-  def partialSolutionVertexes: Set[ClassicRuntimeVertex]
+  def partialSolutionVertexes: Set[ClassicRuntimeVertex] =
+    Set[ClassicRuntimeVertex]()
 
-  def partialSolutionLinks: Set[ClassicRuntimeLink]
+  def partialSolutionLinks: Set[ClassicRuntimeLink] =
+    Set[ClassicRuntimeLink]()
 
-  def fullSolutionVertexes: Set[ClassicRuntimeVertex]
+  def fullSolutionVertexes: Set[ClassicRuntimeVertex] =
+    Set[ClassicRuntimeVertex]()
 
-  def fullSolutionLinks: Set[ClassicRuntimeLink]
+  def fullSolutionLinks: Set[ClassicRuntimeLink] =
+    Set[ClassicRuntimeLink]()
 }

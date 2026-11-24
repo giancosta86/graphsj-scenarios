@@ -11,6 +11,7 @@ import scala.language.implicitConversions
 class PrimAlgorithm(verbose: Boolean) extends ClassicAlgorithm(verbose) {
   override protected type DesignVertex =
     PrimDesignVertex
+
   override protected type DesignLink =
     PrimDesignEdge
 
@@ -31,7 +32,7 @@ class PrimAlgorithm(verbose: Boolean) extends ClassicAlgorithm(verbose) {
 
   override protected def onInit(graph: RuntimeGraph, console: OutputConsole): (RuntimeGraph, Boolean) = ???
 
-  override protected def onRunStep(stepIndex: Int, graph: RuntimeGraph, console: OutputConsole): (RuntimeGraph, Boolean) = ???
+  override protected def onMainStep(stepIndex: Int, graph: RuntimeGraph, console: OutputConsole): (RuntimeGraph, Boolean) = ???
 
   override protected def onExpectedEnd(stepIndex: Int, graph: RuntimeGraph, console: OutputConsole): RuntimeGraph = ???
 

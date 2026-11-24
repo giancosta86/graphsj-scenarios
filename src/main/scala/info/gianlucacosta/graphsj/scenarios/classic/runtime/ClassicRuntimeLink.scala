@@ -5,11 +5,10 @@ import info.gianlucacosta.eighthbridge.fx.VisualLink
 import info.gianlucacosta.eighthbridge.fx.facets.{HasHandlesSettable, HasOptionalCustomLabelCenterSettable}
 import info.gianlucacosta.graphsj.scenarios.classic.ClassicAlgorithm
 
-class ClassicRuntimeLink(algorithm: ClassicAlgorithm)
+abstract class ClassicRuntimeLink(algorithm: ClassicAlgorithm)
   extends VisualLink
   with HasSelectedSettable
   with HasHandlesSettable
-  with HasOptionalCustomLabelCenterSettable
   with HasStyleClasses {
   override def styleClasses: Set[String] = {
     if (algorithm.partialSolutionLinks.contains(this))
@@ -19,5 +18,4 @@ class ClassicRuntimeLink(algorithm: ClassicAlgorithm)
     else
       Set()
   }
-
 }

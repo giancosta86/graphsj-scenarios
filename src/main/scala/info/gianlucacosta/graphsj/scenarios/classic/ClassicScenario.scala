@@ -3,7 +3,7 @@ package info.gianlucacosta.graphsj.scenarios.classic
 import info.gianlucacosta.eighthbridge.fx.{Styles, VisualGraph}
 import info.gianlucacosta.graphsj.sdk.Scenario
 import info.gianlucacosta.helios.desktop.DesktopUtils
-import info.gianlucacosta.helios.fx.dialogs.Alerts
+import info.gianlucacosta.helios.fx.dialogs.{Alerts, InputDialogs}
 
 object ClassicScenario {
   private val WebsiteUrl =
@@ -14,11 +14,8 @@ object ClassicScenario {
 }
 
 abstract class ClassicScenario extends Scenario {
-  private var _verbose: Boolean =
-    true
-
-  protected def verbose: Boolean =
-    _verbose
+  protected var verbose: Boolean =
+    true //TODO! false?
 
   override def stylesheets: List[String] =
     List(
@@ -31,10 +28,20 @@ abstract class ClassicScenario extends Scenario {
     DesktopUtils.openBrowser(ClassicScenario.WebsiteUrl)
   }
 
-  //TODO! Add support for the "verbose" flag here?
+  //TODO! What if I wanted to adjust GraphCanvas after setting the options?
   override def showSettings(designGraph: VisualGraph): Option[VisualGraph] = {
-    Alerts.showInfo("No settings available for this scenario.")
-    None
+    InputDialogs
+      .askYesNoCancel(
+        message=
+          "Make the algorithm verbose?",
+        header=
+          "Algorithm settings"
+      )
+      .foreach(requestedVerbose =>
+        verbose = requestedVerbose
+      )
+
+    Some(designGraph)
   }
 
   override def runStepsBeforePausing: Int =

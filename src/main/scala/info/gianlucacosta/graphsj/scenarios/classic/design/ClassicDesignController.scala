@@ -1,4 +1,4 @@
-package info.gianlucacosta.graphsj.scenarios.classic
+package info.gianlucacosta.graphsj.scenarios.classic.design
 
 import info.gianlucacosta.eighthbridge.fx.GraphCanvasController
 import info.gianlucacosta.eighthbridge.fx.controllers.bundles.StructuralEditing
