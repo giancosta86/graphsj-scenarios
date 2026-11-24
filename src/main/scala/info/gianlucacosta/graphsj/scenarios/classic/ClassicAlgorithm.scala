@@ -3,23 +3,25 @@ package info.gianlucacosta.graphsj.scenarios.classic
 import info.gianlucacosta.eighthbridge.core.Graph
 import info.gianlucacosta.eighthbridge.core.directed.DirectedGraph
 import info.gianlucacosta.eighthbridge.fx.{VisualDirectedGraph, VisualGraph, VisualLink, VisualUndirectedGraph, VisualVertex}
+import info.gianlucacosta.graphsj.scenarios.classic.design.{ClassicDesignLink, ClassicDesignVertex}
+import info.gianlucacosta.graphsj.scenarios.classic.runtime.{ClassicRuntimeLink, ClassicRuntimeVertex}
 import info.gianlucacosta.graphsj.sdk.{Algorithm, OutputConsole}
 
 abstract class ClassicAlgorithm(protected val verbose: Boolean) extends Algorithm {
   protected type DesignVertex <:
-    VisualVertex
+    ClassicDesignVertex
 
   protected type DesignLink <:
-    VisualLink
+    ClassicDesignLink
 
   protected type DesignGraph <:
     Graph[DesignVertex, DesignLink]
 
   protected type RuntimeVertex <:
-    VisualVertex
+    ClassicRuntimeVertex
 
   protected type RuntimeLink <:
-    VisualLink
+    ClassicRuntimeLink
 
   protected type RuntimeGraph <:
     Graph[RuntimeVertex, RuntimeLink]
@@ -72,7 +74,7 @@ abstract class ClassicAlgorithm(protected val verbose: Boolean) extends Algorith
 
     designGraph.links.foreach(designLink => {
       val (firstDesignAnchor, secondDesignAnchor): (DesignVertex, DesignVertex) =
-        designGraph.getAnchorPair(designLink)
+        designGraph.getAnchorPair(designLink).get
 
       val runtimeAnchors =
         (
@@ -100,4 +102,12 @@ abstract class ClassicAlgorithm(protected val verbose: Boolean) extends Algorith
   protected def onRunStep(stepIndex: Int, graph: RuntimeGraph, console: OutputConsole): (RuntimeGraph, Boolean)
 
   protected def onExpectedEnd(stepIndex: Int, graph: RuntimeGraph, console: OutputConsole): RuntimeGraph
+
+  def partialSolutionVertexes: Set[ClassicRuntimeVertex]
+
+  def partialSolutionLinks: Set[ClassicRuntimeLink]
+
+  def fullSolutionVertexes: Set[ClassicRuntimeVertex]
+
+  def fullSolutionLinks: Set[ClassicRuntimeLink]
 }
