@@ -88,9 +88,10 @@ abstract class ClassicAlgorithm(protected val verbose: Boolean) extends Algorith
         )
 
       val runtimeLink: RuntimeLink =
-        createRuntimeLink(designLink)
-
-      //TODO! Copy as many facets as possible!
+        copyLinkFacets(
+          designLink,
+          createRuntimeLink(designLink)
+        )
 
       runtimeGraph =
         runtimeGraph.addLink(runtimeAnchors, runtimeLink)
@@ -105,38 +106,38 @@ abstract class ClassicAlgorithm(protected val verbose: Boolean) extends Algorith
     var result: RuntimeVertex =
       runtimeVertex
 
-    Facet.as[RuntimeVertex with HasCenterSettable](result).foreach(facetedRuntimeVertex =>
+    Facet.as[HasCenterSettable](result).foreach(facetedRuntimeVertex =>
       Facet.as[HasCenter](designVertex).foreach(facetedDesignVertex => {
         result =
-          facetedRuntimeVertex.setCenter(facetedDesignVertex.center)
+          facetedRuntimeVertex.setCenter(facetedDesignVertex.center).asInstanceOf[RuntimeVertex]
       })
     )
 
-    Facet.as[RuntimeVertex with HasNameSettable](result).foreach(facetedRuntimeVertex =>
+    Facet.as[HasNameSettable](result).foreach(facetedRuntimeVertex =>
       Facet.as[HasName](designVertex).foreach(facetedDesignVertex => {
         result =
-          facetedRuntimeVertex.setName(facetedDesignVertex.name)
+          facetedRuntimeVertex.setName(facetedDesignVertex.name).asInstanceOf[RuntimeVertex]
       })
     )
 
-    Facet.as[RuntimeVertex with HasLabelSettable](result).foreach(facetedRuntimeVertex =>
+    Facet.as[HasLabelSettable](result).foreach(facetedRuntimeVertex =>
       Facet.as[HasLabel](designVertex).foreach(facetedDesignVertex => {
         result =
-          facetedRuntimeVertex.setLabel(facetedDesignVertex.label)
+          facetedRuntimeVertex.setLabel(facetedDesignVertex.label).asInstanceOf[RuntimeVertex]
       })
     )
 
-    Facet.as[RuntimeVertex with HasSelectedSettable](result).foreach(facetedRuntimeVertex =>
+    Facet.as[HasSelectedSettable](result).foreach(facetedRuntimeVertex =>
       Facet.as[HasSelected](designVertex).foreach(facetedDesignVertex => {
         result =
-          facetedRuntimeVertex.setSelected(facetedDesignVertex.selected)
+          facetedRuntimeVertex.setSelected(facetedDesignVertex.selected).asInstanceOf[RuntimeVertex]
       })
     )
 
-    Facet.as[RuntimeVertex with HasStyleClassesSettable](result).foreach(facetedRuntimeVertex =>
+    Facet.as[HasStyleClassesSettable](result).foreach(facetedRuntimeVertex =>
       Facet.as[HasStyleClasses](designVertex).foreach(facetedDesignVertex => {
         result =
-          facetedRuntimeVertex.setStyleClasses(facetedDesignVertex.styleClasses)
+          facetedRuntimeVertex.setStyleClasses(facetedDesignVertex.styleClasses).asInstanceOf[RuntimeVertex]
       })
     )
 
@@ -149,56 +150,56 @@ abstract class ClassicAlgorithm(protected val verbose: Boolean) extends Algorith
     var result: RuntimeLink =
       runtimeLink
 
-    Facet.as[RuntimeLink with HasNameSettable](result).foreach(facetedRuntimeLink =>
+    Facet.as[HasNameSettable](result).foreach(facetedRuntimeLink =>
       Facet.as[HasName](designLink).foreach(facetedDesignLink => {
         result =
-          facetedRuntimeLink.setName(facetedDesignLink.name)
+          facetedRuntimeLink.setName(facetedDesignLink.name).asInstanceOf[RuntimeLink]
       })
     )
 
-    Facet.as[RuntimeLink with HasLabelSettable](result).foreach(facetedRuntimeLink =>
+    Facet.as[HasLabelSettable](result).foreach(facetedRuntimeLink =>
       Facet.as[HasLabel](designLink).foreach(facetedDesignLink => {
         result =
-          facetedRuntimeLink.setLabel(facetedDesignLink.label)
+          facetedRuntimeLink.setLabel(facetedDesignLink.label).asInstanceOf[RuntimeLink]
       })
     )
 
-    Facet.as[RuntimeLink with HasSelectedSettable](result).foreach(facetedRuntimeLink =>
+    Facet.as[HasSelectedSettable](result).foreach(facetedRuntimeLink =>
       Facet.as[HasSelected](designLink).foreach(facetedDesignLink => {
         result =
-          facetedRuntimeLink.setSelected(facetedDesignLink.selected)
+          facetedRuntimeLink.setSelected(facetedDesignLink.selected).asInstanceOf[RuntimeLink]
       })
     )
 
-    Facet.as[RuntimeLink with HasStyleClassesSettable](result).foreach(facetedRuntimeLink =>
+    Facet.as[HasStyleClassesSettable](result).foreach(facetedRuntimeLink =>
       Facet.as[HasStyleClasses](designLink).foreach(facetedDesignLink => {
         result =
-          facetedRuntimeLink.setStyleClasses(facetedDesignLink.styleClasses)
+          facetedRuntimeLink.setStyleClasses(facetedDesignLink.styleClasses).asInstanceOf[RuntimeLink]
       })
     )
 
-    Facet.as[RuntimeLink with HasHandlesSettable](result).foreach(facetedRuntimeLink =>
+    Facet.as[HasHandlesSettable](result).foreach(facetedRuntimeLink =>
       Facet.as[HasHandles](designLink).foreach(facetedDesignLink => {
         result =
-          facetedRuntimeLink.setHandles(facetedDesignLink.handles)
+          facetedRuntimeLink.setHandles(facetedDesignLink.handles).asInstanceOf[RuntimeLink]
       })
     )
 
-    Facet.as[RuntimeLink with HasOptionalCustomLabelCenterSettable](result).foreach(facetedRuntimeLink =>
+    Facet.as[HasOptionalCustomLabelCenterSettable](result).foreach(facetedRuntimeLink =>
       Facet.as[HasOptionalCustomLabelCenter](designLink).foreach(facetedDesignLink => {
         result =
-          facetedRuntimeLink.setCustomLabelCenter(facetedDesignLink.customLabelCenter)
+          facetedRuntimeLink.setCustomLabelCenter(facetedDesignLink.customLabelCenter).asInstanceOf[RuntimeLink]
       })
     )
 
-    Facet.as[RuntimeLink with HasBarbsSettable](result).foreach(facetedRuntimeLink =>
+    Facet.as[HasBarbsSettable](result).foreach(facetedRuntimeLink =>
       Facet.as[Arc](designLink).foreach(facetedDesignLink => {
         result =
-          facetedRuntimeLink.setBarbs(facetedDesignLink.barbs)
+          facetedRuntimeLink.setBarbs(facetedDesignLink.barbs).asInstanceOf[RuntimeLink]
       })
     )
 
-    Facet.as[RuntimeLink with HasWeightBoundedSettable](result).foreach(facetedRuntimeLink =>
+    Facet.as[HasWeightBoundedSettable](result).foreach(facetedRuntimeLink =>
       Facet.as[HasWeightBounded](designLink).foreach(facetedDesignLink => {
         result =
           facetedRuntimeLink.setWeight(
@@ -208,7 +209,7 @@ abstract class ClassicAlgorithm(protected val verbose: Boolean) extends Algorith
               facetedDesignLink.weight,
             capacity=
               facetedDesignLink.capacity
-          )
+          ).asInstanceOf[RuntimeLink]
       })
     )
 

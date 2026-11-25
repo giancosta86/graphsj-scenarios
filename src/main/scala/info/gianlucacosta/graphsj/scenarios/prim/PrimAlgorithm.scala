@@ -26,21 +26,15 @@ class PrimAlgorithm(verbose: Boolean) extends ClassicAlgorithm(verbose) {
   private var treeBindings: List[(PrimDesignVertex, PrimDesignVertex)] = _
 
 
-  override protected def createRuntimeVertex(designVertex: PrimDesignVertex): PrimRuntimeVertex = ???
+  override protected def createRuntimeVertex(designVertex: PrimDesignVertex): PrimRuntimeVertex =
+    new PrimRuntimeVertex(this)
 
-  override protected def createRuntimeLink(designLink: PrimDesignEdge): PrimRuntimeEdge = ???
+  override protected def createRuntimeLink(designLink: PrimDesignEdge): PrimRuntimeEdge =
+    new PrimRuntimeEdge(this)
 
-  override protected def onInit(graph: RuntimeGraph, console: OutputConsole): (RuntimeGraph, Boolean) = ???
+  override protected def onInit(graph: RuntimeGraph, console: OutputConsole): (RuntimeGraph, Boolean) =
+    (graph, false)
 
-  override protected def onMainStep(stepIndex: Int, graph: RuntimeGraph, console: OutputConsole): (RuntimeGraph, Boolean) = ???
-
-  override protected def onExpectedEnd(stepIndex: Int, graph: RuntimeGraph, console: OutputConsole): RuntimeGraph = ???
-
-  override def partialSolutionVertexes: Set[ClassicRuntimeVertex] = ???
-
-  override def partialSolutionLinks: Set[ClassicRuntimeLink] = ???
-
-  override def fullSolutionVertexes: Set[ClassicRuntimeVertex] = ???
-
-  override def fullSolutionLinks: Set[ClassicRuntimeLink] = ???
+  override protected def onMainStep(stepIndex: Int, graph: RuntimeGraph, console: OutputConsole): (RuntimeGraph, Boolean) =
+    (graph, false)
 }
