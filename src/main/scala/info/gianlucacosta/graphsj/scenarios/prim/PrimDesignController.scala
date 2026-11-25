@@ -13,12 +13,6 @@ class PrimDesignController
   with CreateVertexWithName
   with EditVertexName
   with EditLinkWeight {
-  override def createVertexNode(vertex: VisualVertex): VertexNode =
-    new LabeledVertexNode(graphCanvas, vertex)
-
-  override def createLinkNode(link: VisualLink): LinkNode =
-    new LabeledLinkNode(graphCanvas, link.asInstanceOf[PrimDesignEdge])
-
   override protected def createNamedVertex(center: Point2D, vertexName: String): PrimDesignVertex =
     new PrimDesignVertex()
       .setCenter(center)
